@@ -9,7 +9,7 @@ Luokat voivat sisältää aliluokkia tai yhdellä askareella voi olla monta luok
 ## Toimintoja:
 
 * Kirjautuminen
-* Askereen lisäys, muokkaus ja poisto
+* Askareen lisäys, muokkaus ja poisto
 * Tärkeysasteen lisäys ja poisto
 * Askareen tärkeyttäminen lisäyksessä tai myöhemmin
 * Luokkien lisäys ja poisto
