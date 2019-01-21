@@ -1,5 +1,4 @@
 venv
-<<<<<<< HEAD
 __pycache__
 
 # Byte-compiled / optimized / DLL files
@@ -118,5 +117,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 tasks.db
-=======
->>>>>>> 8bc382bd83f70929cb27e8182bba7e61ce6fe6eb
+
