@@ -1,15 +1,9 @@
 Click==7.0
 Flask==1.0.2
-<<<<<<< HEAD
 Flask-SQLAlchemy==2.3.2
-=======
->>>>>>> 8bc382bd83f70929cb27e8182bba7e61ce6fe6eb
 gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.0
-<<<<<<< HEAD
 SQLAlchemy==1.2.16
-=======
->>>>>>> 8bc382bd83f70929cb27e8182bba7e61ce6fe6eb
 Werkzeug==0.14.1
