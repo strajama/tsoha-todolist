@@ -2,8 +2,9 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('tasks_edit') }}">
-  <input type="text" name="name"/>
-  <input type="text" name="description"/>
+  Edit name <input type="text" name="name"/><br>
+  Description <input type="text" name="description"/><br>
+  Done <input type="text" name="done"/><br>
 <!--  <input type="submit" value="Edit task"/>-->
 </form>
 {% endblock %}
