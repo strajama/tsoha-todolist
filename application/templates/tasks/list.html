@@ -4,12 +4,14 @@
   <table>
     <tr>
       <th>Task</th>
+      <th>Description</th>
       <th>Done</th>
       <th></th>
     </tr>
     {% for task in tasks %}
     <tr>
       <td>{{ task.name }}</td>
+      <td>{{ task.description }}</td>
       <td>{{ task.done }}</td>
       <td>
 	<form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
