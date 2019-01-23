@@ -11,7 +11,6 @@ class Task(db.Model):
     description = db.Column(db.String(1000))
     done = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, name, description):
+    def __init__(self, name):
         self.name = name
-        self.description = description
         self.done = 0
