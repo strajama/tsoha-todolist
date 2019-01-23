@@ -18,3 +18,4 @@ Luokat voivat sisältää aliluokkia tai yhdellä askareella voi olla monta luok
 * Yhdellä askareella voi olla monta luokkaa
 
 [Heroku](https://tsoha-todolist-python.herokuapp.com/)
+[User storyt](https://github.com/strajama/tsoha-todolist/blob/master/documentation/user%20stories.md)
