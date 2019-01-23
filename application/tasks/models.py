@@ -11,6 +11,9 @@ class Task(db.Model):
     description = db.Column(db.String(1000))
     done = db.Column(db.Integer, nullable=False)
 
+    account_id = db.Column(db.Integer, db.ForeignKey('Account.id'),
+                           nullable=False)
+
     def __init__(self, name):
         self.name = name
         self.done = 0
