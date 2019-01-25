@@ -9,13 +9,8 @@
 
 ## Keskeneräiset
 
-## Suunnitelmissa
-* Käyttäjänä voin muuttaa tehtävän tilan tehdystä ei-tehdyksi.
 * Käyttäjänä voin muokata tehtävää.
-* Käyttäjänä voin poistaa tehtävän.
+
+## Suunnitelmissa
 * Käyttäjänä voin hakea tiettyä tehtävää.
-* Käyttäjänä voin kirjautua sovellukseen.
-* Kirjautuneena voin nähdä omat tehtäväni.
-* Kirjautuneena voin lisätä oman tehtävän.
-* Kirjautuneena voin merkitä oman tehtävän tehdyksi.
 * Kirjautuneena voin poistaa tehtävän.
