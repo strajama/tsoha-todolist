@@ -9,11 +9,12 @@ class Task(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(1000))
-    done = db.Column(db.Integer, nullable=False)
+    done = db.Column(db.String(144))
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
 
-    def __init__(self, name):
+    def __init__(self, name):#, description, done):
         self.name = name
-        self.done = 0
+#        self.description = description
+#        self.done = done

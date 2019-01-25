@@ -23,10 +23,7 @@ def tasks_edit():
 def tasks_set_done(task_id):
 
     t = Task.query.get(task_id)
-    if t.done == 0:
-        t.done = 1
-    else:
-        t.done = 0
+    t.done = "tehty"
     db.session().commit()
   
     return redirect(url_for("tasks_index"))
@@ -41,6 +38,7 @@ def tasks_create():
 
     t = Task(form.name.data)
     t.description = form.description.data
+    t.done = "kesken"
     t.account_id = current_user.id
 
     db.session().add(t)
