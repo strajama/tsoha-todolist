@@ -2,7 +2,7 @@ from application import db
 
 class User(db.Model):
 
-    __tablename__ = "Account"
+    __tablename__ = "account"
   
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
