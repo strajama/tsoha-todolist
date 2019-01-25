@@ -1,9 +1,11 @@
 # User stories
 
 ## Valmiit
-* Käyttäjänä voin lisätä uuden tehtävän.
-* Käyttäjänä voin merkitä tehtävän tehdyksi.
 * Käyttäjänä voin katsella tehtäviä.
+* Käyttäjänä voin luoda käyttäjätunnuksena
+* Käyttäjänä voin kirjautua sovellukseen.
+* Käyttäjänä voin kirjautuneena lisätä uuden tehtävän.
+* Käyttäjänä voin kirjautuneena merkitä tehtävän tehdyksi.
 
 ## Keskeneräiset
 
