@@ -21,7 +21,6 @@ def tasks_edit():
 @app.route("/tasks/<task_id>/", methods=["POST"])
 @login_required
 def tasks_set_done(task_id):
-
     t = Task.query.get(task_id)
     t.done = "tehty"
     db.session().commit()
