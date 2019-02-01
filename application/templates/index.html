@@ -7,11 +7,26 @@
 
 {% if needs_tasks is defined %}
 <p>
-  The following users need work:
+  The following users need new tasks:
 </p>
 
 <ul>
   {% for user in needs_tasks %}
+  <li>
+    {{user.id}} {{user.name}}
+  </li>
+  {% endfor %}
+</ul>
+
+{% endif %}
+
+{% if unfinished_tasks is defined%}
+<p>
+  The following users have unfinished tasks:
+</p>
+
+<ul>
+  {% for user in unfinished_tasks %}
   <li>
     {{user.id}} {{user.name}}
   </li>
