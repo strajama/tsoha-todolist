@@ -14,10 +14,10 @@ def tasks_index():
 def tasks_form():
     return render_template("tasks/new.html", form = TaskForm())
 
-@app.route("/tasks/edit/", methods=["GET"])
+@app.route("/tasks/edit/<task_id>/", methods=["GET"])
 @login_required
-def tasks_edit():
-    return render_template("tasks/edit.html")
+def tasks_edit(task_id):
+    return render_template("tasks/edit.html", task_id = task_id)
 
 @app.route("/tasks/edit/", methods=["POST"])
 @login_required

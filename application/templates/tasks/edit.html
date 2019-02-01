@@ -2,6 +2,7 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('tasks_find') }}">
+  {{task_id}}
   Find task <input type="text" name="id"/><br>
   Edit name <input type="text" name="name"/><br>
   Description <input type="text" name="description"/><br>
