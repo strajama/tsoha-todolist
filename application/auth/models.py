@@ -31,12 +31,12 @@ class User(Base):
         return True
 
     @staticmethod
-    def find_users_with_no_tasks():
+    def find_users_with_no_tasks(susanna="kesken"):
         stmt = text("SELECT Account.id, Account.name FROM Account"
                      " LEFT JOIN Task ON Task.account_id = Account.id"
-                     " WHERE (Task.done IS null)"
+                     " WHERE (Task.done IS null OR Task.done = :tellervo)"
                      " GROUP BY Account.id"
-                     " HAVING COUNT(Task.id) = 0")
+                     " HAVING COUNT(Task.id) = 0").params(tellervo=susanna)
         res = db.engine.execute(stmt)
 
         response = []

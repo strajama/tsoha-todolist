@@ -22,7 +22,10 @@ def tasks_edit():
 @login_required
 def tasks_set_done(task_id):
     t = Task.query.get(task_id)
-    t.done = "tehty"
+    if t.done=="tehty":
+        t.done = "kesken"
+    else:
+        t.done = "tehty"
     db.session().commit()
   
     return redirect(url_for("tasks_index"))
