@@ -9,14 +9,20 @@ from application.tasks.forms import TaskForm
 def tasks_index():
     return render_template("tasks/list.html", tasks = Task.query.all())
 
-@app.route("/tasks/new/")
+@app.route("/tasks/new/", methods=["GET"])
 @login_required
 def tasks_form():
     return render_template("tasks/new.html", form = TaskForm())
 
-@app.route("/tasks/edit/")
+@app.route("/tasks/edit/", methods=["GET"])
+@login_required
 def tasks_edit():
     return render_template("tasks/edit.html")
+
+@app.route("/tasks/edit/", methods=["POST"])
+@login_required
+def tasks_find():
+    return redirect(url_for("tasks_edit"))
   
 @app.route("/tasks/<task_id>/", methods=["POST"])
 @login_required
