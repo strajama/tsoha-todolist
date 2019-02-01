@@ -12,7 +12,7 @@ Muistilistasovellus, joka on tarkoitettu sekä yksittäisen henkilön että ryhm
 
 [Heroku](https://tsoha-todolist-python.herokuapp.com/)
 
-Kirjautua voi nimellä "suski" ja salasana on tyhjä.
+Kirjautua voi nimellä "suski" ja salasana on tyhjä tai voit luoda omat tunnukset.
 
 [User storyt](https://github.com/strajama/tsoha-todolist/blob/master/documentation/user%20stories.md)
 
