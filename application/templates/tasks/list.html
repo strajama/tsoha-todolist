@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
-    <tr>
-      <th>Task</th>
-      <th>Description</th>
-      <th>Done</th>
-      <th></th>
-    </tr>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Task/th>
+      <th scope="col">Description</th>
+      <th scope="col">Done</th>
+      <th scope="col">Delete and Edit</th>
+    </thead> 
     {% for task in tasks %}
     <tr>
       <td>{{ task.name }}</td>

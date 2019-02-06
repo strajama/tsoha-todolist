@@ -3,7 +3,12 @@
 {% block body %}
 <form method="POST" action="{{ url_for('tasks_editor', task_id=task.id) }}">
   <p>{{ task_id }}</p>
-  <table>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Name of data</th>
+      <th scope="col">Current data</th>
+      <th scope="col">Edit data here</th>
+     </thead>
     <tr>
       <td>{{ form.name.label }}:</td>
       <td>{{ task.name }} </td>

@@ -2,7 +2,11 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('tasks_create') }}">
-  <table>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+        <th scope="col">Name of data</th>
+        <th scope="col">Fill new task here</th>
+    </thead>
     <tr>
       <td>{{ form.name.label }}</td>
       <td>{{ form.name }}</td>
@@ -23,7 +27,7 @@
       <td>{{ form.done }}</td>
     </tr>
     <tr>
-      <td colspan="4">
+      <td>
         <input type="submit" value="Add a new task"/>
       </td>
     </tr>
