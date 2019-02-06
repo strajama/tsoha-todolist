@@ -17,21 +17,37 @@ def tasks_form():
 @app.route("/tasks/edit/<task_id>/", methods=["GET"])
 @login_required
 def tasks_edit(task_id):
-    return render_template("tasks/edit.html", task_id = task_id)
+    return render_template("tasks/edit.html", task_id = task_id, form = TaskForm(), task=Task.query.get(task_id))
 
-@app.route("/tasks/edit/", methods=["POST"])
+@app.route("/tasks/edit/<task_id>/", methods=["POST"])
 @login_required
-def tasks_find():
-    return redirect(url_for("tasks_edit"))
+def tasks_editor(task_id):
+    form = TaskForm(request.form)
+    if not form.validate():
+        return redirect(url_for("tasks_edit", task_id = task_id))
+
+    task = Task.query.get(task_id)
+    if form.name.data:
+        task.name = form.name.data
+
+    if form.description.data:
+        task.description = form.description.data
+
+    if form.done.data:
+        task.done = form.done.data
+
+    db.session().commit()
+
+    return redirect(url_for("tasks_edit", task_id = task_id))
   
 @app.route("/tasks/<task_id>/", methods=["POST"])
 @login_required
 def tasks_set_done(task_id):
-    t = Task.query.get(task_id)
-    if t.done=="tehty":
-        t.done = "kesken"
+    task = Task.query.get(task_id)
+    if task.done=="tehty":
+        task.done = "kesken"
     else:
-        t.done = "tehty"
+        task.done = "tehty"
     db.session().commit()
   
     return redirect(url_for("tasks_index"))

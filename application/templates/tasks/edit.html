@@ -1,12 +1,29 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<form method="POST" action="{{ url_for('tasks_find') }}">
-  {{task_id}}
-  Find task <input type="text" name="id"/><br>
-  Edit name <input type="text" name="name"/><br>
-  Description <input type="text" name="description"/><br>
-  Done <input type="text" name="done"/><br>
-  <input type="submit" value="Edit task"/>
+<form method="POST" action="{{ url_for('tasks_editor', task_id=task.id) }}">
+  <p>{{ task_id }}</p>
+  <table>
+    <tr>
+      <td>{{ form.name.label }}:</td>
+      <td>{{ task.name }} </td>
+      <td>{{ form.name }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.description.label }}:</td>
+      <td>{{ task.description }} </td>
+      <td>{{ form.description }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.done.label }}:</td>
+      <td>{{ task.done }} </td>
+      <td>{{ form.done }}</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="submit" value="Save changes"/>
+      </td>
+    </tr>
+  </table>
 </form>
 {% endblock %}

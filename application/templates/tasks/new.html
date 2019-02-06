@@ -4,12 +4,8 @@
 <form method="POST" action="{{ url_for('tasks_create') }}">
   <table>
     <tr>
-      <td>
-        {{ form.name.label }}
-      </td>
-      <td>
-        {{ form.name }}
-      </td>
+      <td>{{ form.name.label }}</td>
+      <td>{{ form.name }}</td>
       <td>
         <ul>
           {% for error in form.name.errors %}
@@ -19,20 +15,12 @@
       </td>
     </tr>
     <tr>
-      <td>
-        {{ form.description.label }}
-      </td>
-      <td>
-        {{ form.description }}
-      </td>
+      <td>{{ form.description.label }}</td>
+      <td>{{ form.description }}</td>
     </tr>
     <tr>
-      <td>
-        {{ form.done.label }}
-      </td>
-      <td>
-        {{ form.done }}
-      </td>
+      <td>{{ form.done.label }}</td>
+      <td>{{ form.done }}</td>
     </tr>
     <tr>
       <td colspan="4">
