@@ -23,10 +23,8 @@ def tasks_edit(task_id):
 @login_required
 def tasks_editor(task_id):
     form = TaskForm(request.form)
-    if not form.validate():
-        return redirect(url_for("tasks_edit", task_id = task_id))
-
     task = Task.query.get(task_id)
+
     if form.name.data:
         task.name = form.name.data
 
@@ -42,12 +40,10 @@ def tasks_editor(task_id):
   
 @app.route("/tasks/<task_id>/", methods=["POST"])
 @login_required
-def tasks_set_done(task_id):
+def tasks_delete(task_id):
     task = Task.query.get(task_id)
-    if task.done=="tehty":
-        task.done = "kesken"
-    else:
-        task.done = "tehty"
+
+    db.session.delete(task)
     db.session().commit()
   
     return redirect(url_for("tasks_index"))
