@@ -2,6 +2,7 @@
 
 ## Valmiit
 * Käyttäjänä näen keillä kirjautuneilla käyttäjillä ei ole tehtäviä
+* Käyttäjänä näen mitkä tagit ovat käytössä jonkin tehtävän kanssa
 * Käyttäjänä voin katsella tehtäviä listana.
 * Käyttäjänä voin luoda käyttäjätunnuksena
 * Käyttäjänä voin kirjautua sovellukseen.
@@ -14,5 +15,5 @@
 
 ## Suunnitelmissa
 * Käyttäjänä voin hakea tehtäviä
-* Käyttäjänä voin kirjautuneena lisätä tehtävälle tagin.
+* Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
 * Käyttäjänä näen tehtäviin kiinnitetyt tagit.
