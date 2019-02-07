@@ -14,6 +14,7 @@ class Task(Base):
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(1000))
     done = db.Column(db.String(144))
+    user = db.Column(db.String(144))
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
@@ -28,13 +29,10 @@ class Task(Base):
 
     @staticmethod
     def find_user(id):
-        print("kutsutaan find user")
-        stmt = text("SELECT Account.name FROM Account WHERE (Account.id = 1);").params(id=id)
+        stmt = text("SELECT Account.name FROM Account WHERE (Account.id = :id);").params(id=id)
         res = db.engine.execute(stmt)
-        print("printataan res", res)
         response = []
         for row in res:
             response.append({"name":row[0]})
-        print("printataan response", response)
 
         return response

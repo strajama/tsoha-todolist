@@ -7,7 +7,9 @@ from application.tasks.forms import TaskForm
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
-    return render_template("tasks/list.html", tasks = Task.query.all(), find_user=Task.find_user(Task.account_id))
+    print("taskin account id on")
+    print(Task.account_id)
+    return render_template("tasks/list.html", tasks = Task.query.all())
 
 @app.route("/tasks/new/", methods=["GET"])
 @login_required
@@ -26,6 +28,7 @@ def tasks_create():
     t.description = form.description.data
     t.done = "kesken"
     t.account_id = current_user.id
+    t.user = current_user.name
 
     db.session().add(t)
     db.session().commit()
