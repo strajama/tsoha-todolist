@@ -1,6 +1,7 @@
 # User stories
 
 ## Valmiit
+* Käyttäjänä näen keillä kirjautuneilla käyttäjillä ei ole tehtäviä
 * Käyttäjänä voin katsella tehtäviä listana.
 * Käyttäjänä voin luoda käyttäjätunnuksena
 * Käyttäjänä voin kirjautua sovellukseen.
