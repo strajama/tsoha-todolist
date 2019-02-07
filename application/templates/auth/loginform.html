@@ -3,22 +3,19 @@
 {% block body %}
 {{ error }}
 <form method="POST" action="{{ url_for('auth_login') }}">
-  <table>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Name of data</th>
+      <th scope="col">Fill new tag here</th>
+      <th scope="col"></th>
+    </thead>
     <tr>
-      <td>
-	{{ form.username.label }}
-      </td>
-      <td>
-	{{ form.username }}
-      </td>
+      <td>{{ form.username.label }}</td>
+      <td>{{ form.username }}</td>
     </tr>
     <tr>
-      <td>
-	{{ form.password.label }}
-      </td>
-      <td>
-	{{ form.password }}
-      </td>
+      <td>{{ form.password.label }}</td>
+      <td>{{ form.password }}</td>
     </tr>
     <tr>
       <td colspan="2">
