@@ -47,7 +47,10 @@ class User(Base):
 
     @staticmethod
     def find_users_with_unfinished_tasks(done="kesken"):
-        stmt = text("SELECT Account.id, Account.name FROM Account LEFT JOIN Task ON Task.account_id = Account.id WHERE (Task.done = :done) GROUP BY Account.id").params(done=done)
+        stmt = text("SELECT Account.id, Account.name FROM Account "
+                        "LEFT JOIN Task ON Task.account_id = Account.id "
+                        "WHERE (Task.done = :done) "
+                        "GROUP BY Account.id").params(done=done)
         res = db.engine.execute(stmt)
 
         response = []
