@@ -22,10 +22,10 @@ class Task(Base):
     tags = db.relationship('Tag', secondary=tags, lazy='subquery',
         backref=db.backref('tasks', lazy=True))
 
-    def __init__(self, name):#, description, done):
+    def __init__(self, name, description, done):
         self.name = name
-#        self.description = description
-#        self.done = done
+        self.description = description
+        self.done = done
 
     @staticmethod
     def find_user(id):

@@ -24,13 +24,11 @@ def tasks_create():
     if not form.validate():
         return render_template("tasks/new.html", form = form)
 
-    t = Task(form.name.data)
-    t.description = form.description.data
-    t.done = "kesken"
-    t.account_id = current_user.id
-    t.user = current_user.name
+    task = Task(form.name.data, form.description.data, form.done.data)
+    task.account_id = current_user.id
+    task.user = current_user.name
 
-    db.session().add(t)
+    db.session().add(task)
     db.session().commit()
   
     return redirect(url_for("tasks_index"))
