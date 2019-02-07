@@ -7,12 +7,30 @@ from application.tasks.forms import TaskForm
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
-    return render_template("tasks/list.html", tasks = Task.query.all())
+    return render_template("tasks/list.html", tasks = Task.query.all(), find_user=Task.find_user(Task.account_id))
 
 @app.route("/tasks/new/", methods=["GET"])
 @login_required
 def tasks_form():
     return render_template("tasks/new.html", form = TaskForm())
+
+@app.route("/tasks/", methods=["POST"])
+@login_required
+def tasks_create():
+    form = TaskForm(request.form)
+
+    if not form.validate():
+        return render_template("tasks/new.html", form = form)
+
+    t = Task(form.name.data)
+    t.description = form.description.data
+    t.done = "kesken"
+    t.account_id = current_user.id
+
+    db.session().add(t)
+    db.session().commit()
+  
+    return redirect(url_for("tasks_index"))
 
 @app.route("/tasks/edit/<task_id>/", methods=["GET"])
 @login_required
@@ -26,7 +44,10 @@ def tasks_editor(task_id):
     task = Task.query.get(task_id)
 
     if form.name.data:
-        task.name = form.name.data
+        if not form.validate():
+            return render_template("tasks/new.html", form = form)
+        else:
+            task.name = form.name.data
 
     if form.description.data:
         task.description = form.description.data
@@ -48,20 +69,4 @@ def tasks_delete(task_id):
   
     return redirect(url_for("tasks_index"))
 
-@app.route("/tasks/", methods=["POST"])
-@login_required
-def tasks_create():
-    form = TaskForm(request.form)
 
-    if not form.validate():
-        return render_template("tasks/new.html", form = form)
-
-    t = Task(form.name.data)
-    t.description = form.description.data
-    t.done = "kesken"
-    t.account_id = current_user.id
-
-    db.session().add(t)
-    db.session().commit()
-  
-    return redirect(url_for("tasks_index"))

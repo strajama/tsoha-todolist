@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('tags_create') }}">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <th scope="col">Name of data</th>
+            <th scope="col">Fill new tag here</th>
+        </thead>
+        <tr>
+          <td>{{ form.name.label }}</td>
+          <td>{{ form.name }}</td>
+          <td>
+              <ul>
+                {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Add a new tag"/>
+          </td>
+        </tr>
+
+</form>
+{% endblock %}

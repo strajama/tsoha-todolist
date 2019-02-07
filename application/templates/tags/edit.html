@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('tags_editor', tag_id=tag.id) }}">
+  <p>{{ tag_id }}</p>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Name of data</th>
+      <th scope="col">Current data</th>
+      <th scope="col">Edit data here</th>
+     </thead>
+    <tr>
+      <td>{{ form.name.label }}:</td>
+      <td>{{ tag.name }} </td>
+      <td>{{ form.name }}</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="submit" value="Save changes"/>
+      </td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

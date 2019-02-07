@@ -3,10 +3,11 @@
 {% block body %}
   <table class="table table-striped">
     <thead class="thead-dark">
-      <th scope="col">Task/th>
+      <th scope="col">Task</th>
       <th scope="col">Description</th>
       <th scope="col">Done</th>
       <th scope="col">Delete and Edit</th>
+      <th scope="col">Owner</th>
     </thead> 
     {% for task in tasks %}
     <tr>
@@ -14,11 +15,13 @@
       <td>{{ task.description }}</td>
       <td>{{ task.done }}</td>
       <td>
-	<form method="POST" action="{{ url_for('tasks_delete', task_id=task.id) }}">
-    <input type="submit" value="Delete"/>
-    <a href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a>
-	</form>
+	      <form method="POST" action="{{ url_for('tasks_delete', task_id=task.id) }}">
+          <input type="submit" value="Delete"/>
+          <a href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a>
+	      </form>
       </td>
+      <td>{% for user in find_user %} {{ user.name }}</td>
+      {% endfor %}
     </tr>
     {% endfor %}
   </table>

@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 
 class User(Base):
 
-    __tablename__ = "account"
+    __tablename__ = 'account'
   
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
