@@ -6,9 +6,9 @@ Muistilistasovellus, joka on tarkoitettu sekä yksittäisen henkilön että ryhm
 
 * Kirjautuminen ja salasana
 * Tehtävän lisäys, muokkaus ja poisto
-* Tehtävän voi merkitä tehdyksi
-* Tehtäviä voi hakea
 * Tehtävät voi listata
+* Tagin lisäys, muokkaus ja poisto
+* Tagit voi listata
 
 [Heroku](https://tsoha-todolist-python.herokuapp.com/)
 
