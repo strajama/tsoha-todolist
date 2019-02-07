@@ -1,3 +1,0 @@
-#!/bin/bash
-clear
-heroku addons:destroy heroku-postgresql:hobby-dev
