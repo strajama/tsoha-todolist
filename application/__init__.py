@@ -33,14 +33,11 @@ login_manager.login_message = "Please login to use this functionality."
 from functools import wraps
 
 def login_required(role="admin"):
-    print('login required alkaa')
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
-            print('koristelu')
             if not current_user:
                 return login_manager.unauthorized()
-            print('current user')
             if not current_user.is_authenticated():
                 return login_manager.unauthorized()
             
