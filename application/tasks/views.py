@@ -16,18 +16,16 @@ def tasks_index():
 def tasks_form():
     return render_template("tasks/new.html", form = TaskForm())
 
+@login_required(role="ADMIN")
 @app.route("/tasks/", methods=["POST"])
 @login_required
 def tasks_create():
-    print('luodaan uutta')
     form = TaskForm(request.form)
 
     if not form.validate():
-        print('ei hyvä form')
         return render_template("tasks/new.html", form = form)
 
     task = Task(form.name.data, form.description.data, form.estimatedtime.data)
-    print('luotu task')
     task.usedtime = 0
     task.account_id = current_user.id
     task.username = current_user.name
