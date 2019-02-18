@@ -2,6 +2,7 @@ from application import db
 from application.models import Base
 
 from sqlalchemy.sql import text
+from sqlalchemy.types import Enum
 
 class User(Base):
 
@@ -10,13 +11,14 @@ class User(Base):
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
-
     tasks = db.relationship("Task", backref='account', lazy=True)
+    role = db.Column(db.Enum('admin', 'worker', name='roles'), nullable=False, default='admin')
 
-    def __init__(self, name, username, password):
+    def __init__(self, name, username, password, role):
         self.name = name
         self.username = username
         self.password = password
+        self.role = role
   
     def get_id(self):
         return self.id
@@ -31,7 +33,7 @@ class User(Base):
         return True
 
     def roles(self):
-        return ["ADMIN"]
+        return self.role
 
     @staticmethod
     def find_users_with_no_tasks(susanna="kesken"):

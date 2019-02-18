@@ -11,17 +11,18 @@ if os.environ.get("HEROKU"):
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"    
     app.config["SQLALCHEMY_ECHO"] = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
   
 db = SQLAlchemy(app)
 
 
 # login functionality
-from application.auth.models import User
+# from application.auth.models import User
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
 
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 login_manager = LoginManager()
 login_manager.setup_app(app)
 
@@ -31,19 +32,21 @@ login_manager.login_message = "Please login to use this functionality."
 # roles in login_required
 from functools import wraps
 
-def login_required(role="ANY"):
+def login_required(role="admin"):
+    print('login required alkaa')
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
+            print('koristelu')
             if not current_user:
                 return login_manager.unauthorized()
-
+            print('current user')
             if not current_user.is_authenticated():
                 return login_manager.unauthorized()
             
             unauthorized = False
 
-            if role != "ANY":
+            if role != "admin":
                 unauthorized = True
                 
                 for user_role in current_user.roles():

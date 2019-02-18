@@ -36,7 +36,7 @@ def auth_create():
     if not form.validate():
         return render_template("auth/sign.html", form = form)
 
-    u = User(form.name.data, form.username.data, form.password.data)
+    u = User(form.name.data, form.username.data, form.password.data, form.role.data)
     db.session().add(u)
     db.session().commit()
 

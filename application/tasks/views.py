@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 from application import app, db, login_required
 from application.tasks.models import Task
@@ -7,17 +7,15 @@ from application.tasks.forms import TaskForm
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
-    print("taskin account id on")
-    print(Task.account_id)
     return render_template("tasks/list.html", tasks = Task.query.all())
 
 @app.route("/tasks/new/", methods=["GET"])
-@login_required(role="ADMIN")
+@login_required(role="admin")
 def tasks_form():
     return render_template("tasks/new.html", form = TaskForm())
 
 @app.route("/tasks/", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required(role="admin")
 def tasks_create():
     form = TaskForm(request.form)
 
@@ -35,12 +33,12 @@ def tasks_create():
     return redirect(url_for("tasks_index"))
 
 @app.route("/tasks/edit/<task_id>/", methods=["GET"])
-@login_required(role="ADMIN")
+@login_required(role="admin")
 def tasks_edit(task_id):
     return render_template("tasks/edit.html", task_id = task_id, form = TaskForm(), task=Task.query.get(task_id))
 
 @app.route("/tasks/edit/<task_id>/", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required(role="admin")
 def tasks_editor(task_id):
     form = TaskForm(request.form)
     task = Task.query.get(task_id)
@@ -65,7 +63,7 @@ def tasks_editor(task_id):
     return redirect(url_for("tasks_edit", task_id = task_id))
   
 @app.route("/tasks/<task_id>/", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required(role="admin")
 def tasks_delete(task_id):
     task = Task.query.get(task_id)
 
