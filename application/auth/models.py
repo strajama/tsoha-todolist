@@ -34,7 +34,7 @@ class User(Base):
     def find_users_with_no_tasks(susanna="kesken"):
         stmt = text("SELECT Account.id, Account.name FROM Account"
                      " LEFT JOIN Task ON Task.account_id = Account.id"
-                     " WHERE (Task.usedTime IS null)" # OR Task.usedTime = :tellervo)"
+                     " WHERE (Task.usedtime IS null)" # OR Task.usedtime = :tellervo)"
                      " GROUP BY Account.id"
                      " HAVING COUNT(Task.id) = 0").params(tellervo=susanna)
         res = db.engine.execute(stmt)
@@ -46,11 +46,11 @@ class User(Base):
         return response
 
     @staticmethod
-    def find_users_with_unfinished_tasks(usedTime=0):
+    def find_users_with_unfinished_tasks(usedtime=0):
         stmt = text("SELECT Account.id, Account.name FROM Account "
                         "LEFT JOIN Task ON Task.account_id = Account.id "
-                        "WHERE (Task.usedTime = :usedTime) "
-                        "GROUP BY Account.id").params(usedTime=usedTime)
+                        "WHERE (Task.usedtime = :usedtime) "
+                        "GROUP BY Account.id").params(usedtime=usedtime)
         res = db.engine.execute(stmt)
 
         response = []

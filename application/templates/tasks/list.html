@@ -14,15 +14,15 @@
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.estimatedTime }}</td>
-      <td>{{ task.usedTime }}</td>
+      <td>{{ task.estimatedtime }}</td>
+      <td>{{ task.usedtime }}</td>
       <td>
 	      <form method="POST" action="{{ url_for('tasks_delete', task_id=task.id) }}">
           <input type="submit" value="Delete"/>
           <a href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a>
 	      </form>
       </td>
-      <td>{{ task.userName }}</td>
+      <td>{{ task.username }}</td>
     </tr>
     {% endfor %}
   </table>

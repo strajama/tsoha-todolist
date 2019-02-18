@@ -26,11 +26,11 @@ def tasks_create():
         print('ei hyvä form')
         return render_template("tasks/new.html", form = form)
 
-    task = Task(form.name.data, form.description.data, form.estimatedTime.data)
+    task = Task(form.name.data, form.description.data, form.estimatedtime.data)
     print('luotu task')
-    task.usedTime = 0
+    task.usedtime = 0
     task.account_id = current_user.id
-    task.userName = current_user.name
+    task.username = current_user.name
 
     db.session().add(task)
     db.session().commit()
@@ -57,11 +57,11 @@ def tasks_editor(task_id):
     if form.description.data:
         task.description = form.description.data
 
-    if form.estimatedTime.data:
-        task.estimatedTime = form.estimatedTime.data
+    if form.estimatedtime.data:
+        task.estimatedtime = form.estimatedtime.data
 
-    if form.usedTime.data:
-        task.usedTime = form.usedTime.data
+    if form.usedtime.data:
+        task.usedtime = form.usedtime.data
 
     db.session().commit()
 

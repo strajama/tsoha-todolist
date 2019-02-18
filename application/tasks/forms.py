@@ -4,8 +4,8 @@ from wtforms import StringField, DecimalField, SelectMultipleField, validators
 class TaskForm(FlaskForm):
     name = StringField('Task name', [validators.Length(min=2, max=144)])
     description = StringField('Description', [validators.Length( max=1000)])
-    estimatedTime = DecimalField('Estimated time', [validators.NumberRange(min=1, max=999)])
-    usedTime = DecimalField('Time used')
+    estimatedtime = DecimalField('Estimated time', [validators.NumberRange(min=1, max=999)])
+    usedtime = DecimalField('Time used')
     tags = SelectMultipleField(u'Tags', coerce=int)
  
     class Meta:
