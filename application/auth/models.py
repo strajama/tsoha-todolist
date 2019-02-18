@@ -35,7 +35,9 @@ class User(Base):
         return True
 
     def roles(self):
-        return self.role
+        print('tulostetaan rooli')
+        print(self.role)
+        return [str(self.role)]
 
     @staticmethod
     def find_users_with_no_tasks(susanna="kesken"):

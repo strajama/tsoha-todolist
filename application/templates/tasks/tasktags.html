@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<p>{{ task.name }}</p>
+<form method="POST" action="{{ url_for('tasks_tags', task_id=task.id) }}">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Check here</th>
+      <th scope="col">Choose tags for task</th>
+    </thead>
+    {% for tag in tags %}
+    <tr>
+      <td><input type="checkbox" id={{ tag.id }} name="tags" value={{ tag.id }} </td>
+      <td><label for={{ tag.id }}>{{ tag.name }}</label></td>
+    </tr>
+    {% endfor %}
+    <tr><button type="submit">Add tags to task</button></tr>
+  </table>
+</form>
+
+{% endblock %}

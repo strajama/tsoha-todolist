@@ -20,6 +20,7 @@
 	      <form method="POST" action="{{ url_for('tasks_delete', task_id=task.id) }}">
           <input type="submit" value="Delete"/>
           <a href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a>
+          <a href="{{ url_for('tasks_tagsget', task_id=task.id) }}">Edit tags</a>
 	      </form>
       </td>
       <td>{{ task.username }}</td>

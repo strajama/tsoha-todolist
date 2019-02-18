@@ -3,7 +3,7 @@ from application.models import Base
 
 from sqlalchemy.sql import text
 
-tags = db.Table('tags',
+tagtask = db.Table('tagtask',
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'), primary_key=True),
     db.Column('task_id', db.Integer, db.ForeignKey('task.id'), primary_key=True)
 )
@@ -20,8 +20,7 @@ class Task(Base):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
 
-    tags = db.relationship('Tag', secondary=tags, lazy='subquery',
-        backref=db.backref('tasks', lazy=True))
+    tags = db.relationship('Tag', secondary='tagtask', back_populates='tasks')
 
     def __init__(self, name, description, estimatedtime):
         self.name = name

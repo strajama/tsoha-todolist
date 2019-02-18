@@ -30,20 +30,22 @@ login_manager.login_view = "auth_login"
 login_manager.login_message = "Please login to use this functionality."
 
 # roles in login_required
+# roles in login_required
 from functools import wraps
 
-def login_required(role="admin"):
+def login_required(role="ANY"):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             if not current_user:
                 return login_manager.unauthorized()
+          
             if not current_user.is_authenticated():
                 return login_manager.unauthorized()
             
             unauthorized = False
 
-            if role != "admin":
+            if role != "ANY":
                 unauthorized = True
                 
                 for user_role in current_user.roles():

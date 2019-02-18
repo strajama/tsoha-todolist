@@ -4,6 +4,7 @@ from flask_login import current_user
 from application import app, db, login_required
 from application.tasks.models import Task
 from application.tasks.forms import TaskForm
+from application.tags.models import Tag
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
@@ -35,7 +36,7 @@ def tasks_create():
 @app.route("/tasks/edit/<task_id>/", methods=["GET"])
 @login_required(role="admin")
 def tasks_edit(task_id):
-    return render_template("tasks/edit.html", task_id = task_id, form = TaskForm(), task=Task.query.get(task_id))
+    return render_template("tasks/edit.html", task_id = task_id, form = TaskForm(), task=Task.query.get(task_id), tags=Tag.query.all())
 
 @app.route("/tasks/edit/<task_id>/", methods=["POST"])
 @login_required(role="admin")
@@ -72,4 +73,21 @@ def tasks_delete(task_id):
   
     return redirect(url_for("tasks_index"))
 
+@app.route("/tasks//tasktags/<task_id>", methods=["GET"])
+@login_required(role="admin")
+def tasks_tagsget(task_id):
+    return render_template("tasks/tasktags.html", task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
 
+@app.route("/tasks//tasktags/<task_id>", methods=["POST"])
+@login_required(role="admin")
+def tasks_tags(task_id):
+    task = Task.query.get(task_id)
+    tagtask = request.form.getlist('tags')
+
+    for i in tagtask:
+        tag = Tag.query.get(i)
+        task.tags.append(tag)       
+
+    db.session().commit()  
+
+    return redirect(url_for("tasks_tagsget", task_id = task_id))

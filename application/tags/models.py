@@ -1,21 +1,25 @@
 from application import db
 from application.models import Base
+from application.tasks.models import tagtask
 
 from sqlalchemy.sql import text
+
 
 class Tag(Base):
     __tablename__ = 'tag'
 
     name = db.Column(db.String(144), nullable=False)
 
+    tasks = db.relationship('Task', secondary=tagtask, back_populates='tags')
+
     def __init__(self, name):
         self.name = name
 
     @staticmethod
     def find_tags_that_assigned_task():
-        stmt=text("SELECT Tag.id AS id, Tag.name as name FROM Tag "
-                    "INNER JOIN Tags ON Tag.id=Tags.tag_id "
-                    "INNER JOIN Task ON Tags.task_id=Task.id;")
+        stmt=text("SELECT Tag.id AS id, Tag.name AS name FROM Tag "
+                    "INNER JOIN Tagtask ON Tag.id=Tagtask.tag_id "
+                    "INNER JOIN Task ON Tagtask.task_id=Task.id;")
 
         res = db.engine.execute(stmt)
 
@@ -24,3 +28,9 @@ class Tag(Base):
             response.append({"id":row[0], "name":row[1]})
 
         return response
+
+#    @staticmethod
+ #   def set_tag_to_task(tag_id, task_id):
+  #      stmt=text("INSERT INTO Tagtask (tag_id, task_id) "
+   #                 "VALUES (tag_id = :tag_id, task_id = :task_id)").params(tag_id=tag_id, task_id=task_id)
+    #    db.engine.execute(stmt)
