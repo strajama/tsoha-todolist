@@ -39,7 +39,7 @@ class User(Base):
 
     @staticmethod
     def find_users_with_no_tasks(susanna="kesken"):
-        stmt = text("SELECT Account.id, Account.name FROM Account"
+        stmt = text("SELECT Account.id, Account.name, Account.role FROM Account"
                      " LEFT JOIN Task ON Task.account_id = Account.id"
                      " WHERE (Task.usedtime IS null)" # OR Task.usedtime = :tellervo)"
                      " GROUP BY Account.id"
@@ -48,13 +48,13 @@ class User(Base):
 
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1]})
+            response.append({"id":row[0], "name":row[1], "role":row[2]})
 
         return response
 
     @staticmethod
     def find_users_with_unfinished_tasks(usedtime=0):
-        stmt = text("SELECT Account.id, Account.name FROM Account "
+        stmt = text("SELECT Account.id, Account.name, Account.role FROM Account "
                         "LEFT JOIN Task ON Task.account_id = Account.id "
                         "WHERE (Task.usedtime = :usedtime) "
                         "GROUP BY Account.id").params(usedtime=usedtime)
@@ -62,6 +62,6 @@ class User(Base):
 
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1]})
+            response.append({"id":row[0], "name":row[1], "role":row[2]})
 
         return response
