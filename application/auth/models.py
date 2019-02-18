@@ -3,6 +3,8 @@ from application.models import Base
 
 from sqlalchemy.sql import text
 from sqlalchemy.types import Enum
+from sqlalchemy.dialects.postgresql import ENUM
+from sqlalchemy import Enum
 
 class User(Base):
 
@@ -12,7 +14,7 @@ class User(Base):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
     tasks = db.relationship("Task", backref='account', lazy=True)
-    role = db.Column(db.Enum('admin', 'worker', name='roles'), nullable=False, default='admin')
+    role = db.Column('role', db.Enum('admin', 'worker', name='role', create_type=False), nullable=False, default='admin')
 
     def __init__(self, name, username, password, role):
         self.name = name
