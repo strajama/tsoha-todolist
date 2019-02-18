@@ -19,14 +19,18 @@ def tasks_form():
 @app.route("/tasks/", methods=["POST"])
 @login_required
 def tasks_create():
+    print('luodaan uutta')
     form = TaskForm(request.form)
 
     if not form.validate():
+        print('ei hyvä form')
         return render_template("tasks/new.html", form = form)
 
-    task = Task(form.name.data, form.description.data, form.done.data)
+    task = Task(form.name.data, form.description.data, form.estimatedTime.data)
+    print('luotu task')
+    task.usedTime = 0
     task.account_id = current_user.id
-    task.user = current_user.name
+    task.userName = current_user.name
 
     db.session().add(task)
     db.session().commit()
@@ -53,8 +57,11 @@ def tasks_editor(task_id):
     if form.description.data:
         task.description = form.description.data
 
-    if form.done.data:
-        task.done = form.done.data
+    if form.estimatedTime.data:
+        task.estimatedTime = form.estimatedTime.data
+
+    if form.usedTime.data:
+        task.usedTime = form.usedTime.data
 
     db.session().commit()
 

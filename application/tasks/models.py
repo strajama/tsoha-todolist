@@ -13,8 +13,9 @@ class Task(Base):
 
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(1000))
-    done = db.Column(db.String(144))
-    user = db.Column(db.String(144))
+    estimatedTime = db.Column(db.Numeric(144))
+    usedTime = db.Column(db.Numeric(144))
+    userName = db.Column(db.String(144))
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
@@ -22,10 +23,10 @@ class Task(Base):
     tags = db.relationship('Tag', secondary=tags, lazy='subquery',
         backref=db.backref('tasks', lazy=True))
 
-    def __init__(self, name, description, done):
+    def __init__(self, name, description, estimatedTime):
         self.name = name
         self.description = description
-        self.done = done
+        self.estimatedTime = estimatedTime
 
     @staticmethod
     def find_user(id):

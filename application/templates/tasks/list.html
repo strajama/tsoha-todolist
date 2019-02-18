@@ -5,7 +5,8 @@
     <thead class="thead-dark">
       <th scope="col">Task</th>
       <th scope="col">Description</th>
-      <th scope="col">Done</th>
+      <th scope="col">Estimated time</th>
+      <th scope="col">Used time</th>
       <th scope="col">Delete and Edit</th>
       <th scope="col">Owner</th>
     </thead> 
@@ -13,14 +14,15 @@
     <tr>
       <td>{{ task.name }}</td>
       <td>{{ task.description }}</td>
-      <td>{{ task.done }}</td>
+      <td>{{ task.estimatedTime }}</td>
+      <td>{{ task.usedTime }}</td>
       <td>
 	      <form method="POST" action="{{ url_for('tasks_delete', task_id=task.id) }}">
           <input type="submit" value="Delete"/>
           <a href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a>
 	      </form>
       </td>
-      <td>{{ task.user }}</td>
+      <td>{{ task.userName }}</td>
     </tr>
     {% endfor %}
   </table>
