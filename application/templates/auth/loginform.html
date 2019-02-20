@@ -1,26 +1,16 @@
 {% extends "layout.html" %}
 
 {% block body %}
-{{ error }}
-<form method="POST" action="{{ url_for('auth_login') }}">
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <th scope="col">Name of data</th>
-      <th scope="col">Fill new tag here</th>
-      <th scope="col"></th>
-    </thead>
-    <tr>
-      <td>{{ form.username.label }}</td>
-      <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-      <td>{{ form.password.label }}</td>
-      <td>{{ form.password }}</td>
-    </tr>
-    <tr>
-      <td colspan="2">
-	<input type="submit" value="Login"/>
-      </td>
-    </tr>
+<form method="POST" class="form-group" action="{{ url_for('auth_login') }}">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ form.username.label }}</li>
+      <li class="list-group-item">{{ form.username }}</li>
+      <li class="list-group-item">{{ form.password.label }}</li>
+      <li class="list-group-item">{{ form.password }}</li>
+      <li class="list-group-item">
+        <input type="submit" class="btn btn-primary" value="Login"/>
+      </li>
+      <li class="list-group-item">{{ error }}</li>
+    </ul>
 </form>
 {% endblock %}

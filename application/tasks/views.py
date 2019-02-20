@@ -46,7 +46,7 @@ def tasks_editor(task_id):
 
     if form.name.data:
         if not form.validate():
-            return render_template("tasks/new.html", form = form)
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
         else:
             task.name = form.name.data
 

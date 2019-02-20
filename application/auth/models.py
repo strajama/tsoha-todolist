@@ -51,7 +51,7 @@ class User(Base):
         response = []
         for row in res:
             response.append({"id":row[0], "name":row[1], "role":row[2]})
-
+        print(response)
         return response
 
     @staticmethod
@@ -65,5 +65,5 @@ class User(Base):
         response = []
         for row in res:
             response.append({"id":row[0], "name":row[1], "role":row[2]})
-
+        print(response)
         return response

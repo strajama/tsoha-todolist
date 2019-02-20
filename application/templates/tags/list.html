@@ -1,22 +1,22 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
-    <table class="table table-striped">
-      <thead class="thead-dark">
-        <th scope="col">Tag</th>
-        <th scope="col">Delete and Edit</th>
-        </thead> 
-    {% for tag in tags %}
-    <tr>
-      <td>{{ tag.name }}</td>
-      <td>
-          <form method="POST" action="{{ url_for('tags_delete', tag_id=tag.id) }}">
-            <input type="submit" value="Delete"/>
-            <a href="{{ url_for('tags_edit', tag_id=tag.id) }}">Edit tag</a>
-          </form>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <th scope="col">Tag</th>
+    <th scope="col">Edit tag</th>
+    <th scope="col">Delete</th>
+  </thead> 
+{% for tag in tags %}
+  <tr>
+    <td>{{ tag.name }}</td>
+    <td><a class="page-link" href="{{ url_for('tags_edit', tag_id=tag.id) }}">Edit tag</a></td>
+    <td>
+      <form method="POST" class="form-group" action="{{ url_for('tags_delete', tag_id=tag.id) }}">
+        <input type="submit" class="btn btn-danger" value="Delete"/>
+      </form>
+    </td>
+  </tr>
+{% endfor %}
+</table>
 {% endblock %}
