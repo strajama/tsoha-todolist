@@ -86,7 +86,10 @@ def tasks_tags(task_id):
 
     for i in tagtask:
         tag = Tag.query.get(i)
-        task.tags.append(tag)       
+        if tag in task.tags:
+            task.tags.remove(tag)
+        else:
+            task.tags.append(tag)       
 
     db.session().commit()  
 

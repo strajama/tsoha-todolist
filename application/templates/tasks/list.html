@@ -7,8 +7,8 @@
     <th scope="col">Description</th>
     <th scope="col">Estimated time</th>
     <th scope="col">Used time</th>
+    <th scope="col">Show and edit tags</th>
     <th scope="col">Edit task</th>
-    <th scope="col">Edit tags</th>
     <th scope="col">Owner</th>
     <th scope="col">Delete</th>
   </thead> 
@@ -18,8 +18,8 @@
     <td>{{ task.description }}</td>
     <td>{{ task.estimatedtime }}</td>
     <td>{{ task.usedtime }}</td>
+    <td><a class="page-link" href="{{ url_for('tasks_tagsget', task_id=task.id) }}">Tags</a></td>
     <td><a class="page-link" href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a></td>
-    <td><a class="page-link" href="{{ url_for('tasks_tagsget', task_id=task.id) }}">Edit tags</a></td>
     <td>{{ task.username }}</td>
     <td>
         <form method="POST" class="form-group" action="{{ url_for('tasks_delete', task_id=task.id) }}">
