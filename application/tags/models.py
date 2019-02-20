@@ -28,9 +28,3 @@ class Tag(Base):
             response.append({"id":row[0], "name":row[1]})
 
         return response
-
-#    @staticmethod
- #   def set_tag_to_task(tag_id, task_id):
-  #      stmt=text("INSERT INTO Tagtask (tag_id, task_id) "
-   #                 "VALUES (tag_id = :tag_id, task_id = :task_id)").params(tag_id=tag_id, task_id=task_id)
-    #    db.engine.execute(stmt)

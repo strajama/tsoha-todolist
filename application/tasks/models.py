@@ -13,8 +13,8 @@ class Task(Base):
 
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(1000))
-    estimatedtime = db.Column(db.Numeric(144))
-    usedtime = db.Column(db.Numeric(144))
+    estimatedtime = db.Column(db.Integer())
+    usedtime = db.Column(db.Integer())
     username = db.Column(db.String(144))
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
