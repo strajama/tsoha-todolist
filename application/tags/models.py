@@ -25,6 +25,8 @@ class Tag(Base):
 
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1]})
+            if {"id":row[0], "name":row[1]} not in response:
+                response.append({"id":row[0], "name":row[1]})
 
+        print(response)
         return response
