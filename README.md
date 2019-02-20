@@ -10,7 +10,7 @@ Muistilistasovellus, joka on tarkoitettu sekä yksittäisen henkilön että ryhm
 * Tagin lisäys, muokkaus ja poisto
 * Tagit voi listata
 
-[Heroku](https://tsoha-todolist-python.herokuapp.com/)
+[Kokeile sovellusta Herokussa](https://tsoha-todolist-python.herokuapp.com/)
 
 Kirjautua voi luomalla omat tunnukset.
 
