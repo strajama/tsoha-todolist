@@ -23,8 +23,6 @@ def tasks_create():
 
     if not form.validate():
         return render_template("tasks/new.html", form = form)
-    print('estimated time')
-    print(form.estimated_time)
     task = Task(form.name.data, form.description.data, form.estimated_time.data)
     task.used_time = 0
     task.account_id = current_user.id
