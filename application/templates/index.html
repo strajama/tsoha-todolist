@@ -3,28 +3,41 @@
 {% block body %}
 
 
-{% if unfinished_tasks is defined and unfinished_tasks%}
+{% if unstarted_tasks is defined and unstarted_tasks%}
 <ul class="list-group list-group-flush">
   <li class="list-group-item list-group-item-primary">
-    The following users have unfinished tasks:
+    The following users have unstarted tasks:
   </li>
-  {% for user in unfinished_tasks %}
+  {% for user in unstarted_tasks %}
   <li class="list-group-item"> 
-    {{user.id}} {{user.name}} {{user.role}}
+    User "{{user.name}}" with id {{user.id}}.
   </li>
   {% endfor %}
 </ul>
 
 {% endif %}
 
-{% if used_tags is defined and used_tags %}
+{% if most_used_tags is defined and most_used_tags %}
 <ul class="list-group list-group-flush">
   <li class="list-group-item list-group-item-primary">
-    The following tags are connected to tasks
+    The following tags are most used in tags
   </li>
-  {% for tag in used_tags %}
+  {% for tag in most_used_tags %}
   <li class="list-group-item"> 
-    {{tag.id}} {{tag.name}} 
+    Tag "{{tag.name}}" is used in {{tag.count}} tasks. Time has been used {{tag.sum}}.
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if tasks_roles is defined and tasks_roles %}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item list-group-item-primary">
+    The following roles are connected to tasks
+  </li>
+  {% for role in tasks_roles %}
+  <li class="list-group-item"> 
+    Users with role "{{role.name}}" have added {{role.count}} tasks.
   </li>
   {% endfor %}
 </ul>

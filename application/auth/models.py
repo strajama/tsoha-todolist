@@ -48,7 +48,7 @@ class User(Base):
         return response
 
     @staticmethod
-    def find_users_with_unfinished_tasks(used_time=0):
+    def find_users_with_unstarted_tasks(used_time=0):
         stmt = text("SELECT Account.id, Account.name FROM Account "
                         "LEFT JOIN Task ON Task.account_id = Account.id "
                         "WHERE (Task.used_time = :used_time) "
@@ -58,4 +58,17 @@ class User(Base):
         response = []
         for row in res:
             response.append({"id":row[0], "name":row[1]})
+        return response
+
+    @staticmethod
+    def find_number_of_tasks_by_user_roles():
+        stmt = text("SELECT Account.role, COUNT(*) FROM Account "
+                        "INNER JOIN Task ON Task.account_id = Account.id "
+                        "GROUP BY Account.role "
+                        "ORDER BY Account.role DESC;")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"name":row[0], "count":row[1]})
         return response

@@ -28,5 +28,20 @@ class Tag(Base):
             if {"id":row[0], "name":row[1]} not in response:
                 response.append({"id":row[0], "name":row[1]})
 
-        print(response)
+        return response
+
+    @staticmethod
+    def find_most_used_tags():
+        stmt=text("SELECT Tag.name, COUNT(*), SUM (Task.used_time) FROM Tag "
+                    "LEFT JOIN Tagtask ON Tagtask.tag_id = Tag.id "
+                    "LEFT JOIN Task ON Task.id = Tagtask.task_id "
+                    "GROUP BY Tag.name "
+                    "ORDER BY Task.used_time;")
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"name":row[0], "count":row[1], "sum":row[2]})
+
         return response
