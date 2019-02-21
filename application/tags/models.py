@@ -33,10 +33,9 @@ class Tag(Base):
     @staticmethod
     def find_most_used_tags():
         stmt=text("SELECT Tag.name, COUNT(*), SUM (Task.used_time) FROM Tag "
-                    "LEFT JOIN Tagtask ON Tagtask.tag_id = Tag.id "
-                    "LEFT JOIN Task ON Task.id = Tagtask.task_id "
-                    "GROUP BY Tag.name "
-                    "ORDER BY Task.used_time;")
+                    "INNER JOIN Tagtask ON Tagtask.tag_id = Tag.id "
+                    "INNER JOIN Task ON Task.id = Tagtask.task_id "
+                    "GROUP BY Tag.name;")
 
         res = db.engine.execute(stmt)
 
