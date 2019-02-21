@@ -33,24 +33,24 @@
       </td>
     </tr>
     <tr>
-      <td>{{ form.estimatedtime.label }}:</td>
-      <td>{{ task.estimatedtime }} </td>
-      <td>{{ form.estimatedtime }}</td>
+      <td>{{ form.estimated_time.label }}:</td>
+      <td>{{ task.estimated_time }} </td>
+      <td>{{ form.estimated_time }}</td>
       <td>
         <ul>
-          {% for error in form.estimatedtime.errors %}
+          {% for error in form.estimated_time.errors %}
           <li>{{ error }}</li>
           {% endfor %}
         </ul>
       </td>
     </tr>
     <tr>
-      <td>{{  form.usedtime.label  }}</td>
-      <td>{{  task.usedtime  }}</td>
-      <td>{{  form.usedtime  }}</td>
+      <td>{{  form.used_time.label  }}</td>
+      <td>{{  task.used_time  }}</td>
+      <td>{{  form.used_time  }}</td>
       <td>
         <ul>
-          {% for error in form.usedtime.errors %}
+          {% for error in form.used_time.errors %}
           <li>{{ error }}</li>
           {% endfor %}
         </ul>

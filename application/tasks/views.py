@@ -5,6 +5,7 @@ from application import app, db
 from application.tasks.models import Task
 from application.tasks.forms import TaskForm
 from application.tags.models import Tag
+from application.auth.models import User
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
@@ -22,9 +23,10 @@ def tasks_create():
 
     if not form.validate():
         return render_template("tasks/new.html", form = form)
-
-    task = Task(form.name.data, form.description.data, form.estimatedtime.data)
-    task.usedtime = 0
+    print('estimated time')
+    print(form.estimated_time)
+    task = Task(form.name.data, form.description.data, form.estimated_time.data)
+    task.used_time = 0
     task.account_id = current_user.id
     task.username = current_user.name
 
@@ -53,11 +55,11 @@ def tasks_editor(task_id):
     if form.description.data:
         task.description = form.description.data
 
-    if form.estimatedtime.data:
-        task.estimatedtime = form.estimatedtime.data
+    if form.estimated_time.data:
+        task.estimated_time = form.estimated_time.data
 
-    if form.usedtime.data:
-        task.usedtime = form.usedtime.data
+    if form.used_time.data:
+        task.used_time = form.used_time.data
 
     db.session().commit()
 

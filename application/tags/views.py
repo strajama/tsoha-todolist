@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user
 
-from application import app, db
+from application import app, db, login_required
 from application.tags.models import Tag
 from application.tags.forms import TagForm
 
@@ -10,12 +10,12 @@ def tags_index():
     return render_template("tags/list.html", tags = Tag.query.all())
 
 @app.route("/tags/new/")
-@login_required
+@login_required(role='admin')
 def tags_form():
     return render_template("tags/new.html", form=TagForm())
 
 @app.route("/tags/", methods=["POST"])
-@login_required
+@login_required(role='admin')
 def tags_create():
     form = TagForm(request.form)
 
@@ -30,12 +30,12 @@ def tags_create():
     return redirect(url_for("tags_index"))
 
 @app.route("/tags/edit/<tag_id>/", methods=["GET"])
-@login_required
+@login_required(role='admin')
 def tags_edit(tag_id):
     return render_template("tags/edit.html", tag_id = tag_id, form = TagForm(), tag=Tag.query.get(tag_id))
 
 @app.route("/tags/edit/<tag_id>/", methods=["POST"])
-@login_required
+@login_required(role='admin')
 def tags_editor(tag_id):
     form = TagForm(request.form)
     tag = Tag.query.get(tag_id)
@@ -51,7 +51,7 @@ def tags_editor(tag_id):
     return redirect(url_for("tags_edit", tag_id = tag_id))
 
 @app.route("/tags/<tag_id>/", methods=["POST"])
-@login_required
+@login_required(role='admin')
 def tags_delete(tag_id):
     tag = Tag.query.get(tag_id)
 

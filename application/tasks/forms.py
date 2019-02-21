@@ -5,8 +5,8 @@ from application.tags.models import Tag
 class TaskForm(FlaskForm):
     name = StringField('Task name', [validators.Length(min=2, max=144)])
     description = StringField('Description', [validators.Length( max=1000)])
-    estimatedtime = IntegerField('Estimated time', [validators.NumberRange(min=1, max=999)])
-    usedtime = IntegerField('Time used')
+    estimated_time = IntegerField('Estimated time', [validators.NumberRange(min=1, max=999)])
+    used_time = IntegerField('Time used')
  
     class Meta:
         csrf = False

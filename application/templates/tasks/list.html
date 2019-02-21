@@ -16,8 +16,8 @@
   <tr>
     <td>{{ task.name }}</td>
     <td>{{ task.description }}</td>
-    <td>{{ task.estimatedtime }}</td>
-    <td>{{ task.usedtime }}</td>
+    <td>{{ task.estimated_time }}</td>
+    <td>{{ task.used_time }}</td>
     <td><a class="page-link" href="{{ url_for('tasks_tagsget', task_id=task.id) }}">Tags</a></td>
     <td><a class="page-link" href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a></td>
     <td>{{ task.username }}</td>
