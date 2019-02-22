@@ -54,6 +54,14 @@ Tehtävän luonnin jälkeen aukeaa lista kaikista tehtävistä.
 
 Linkistä avautuu lista kaikista sovelluksissa olevista tageista ja ne näkyvät kaikille käyttäjille.
 
+Listalla näkyy kaikki tagit, Edit tag -linkki ja Delete-nappi. Vain admin-roolin omaavat käyttäjät voivat poistaa tagin tai muokata sitä.
+
+## Edit tag -linkki
+
+Vain admin-roolin omaavat käyttäjät voivat käyttää tätä linkkiä.
+
+Edit tag -linkistä pääsee muokkaamaan tagin nimen toiseksi ja Save changes -nappia painamalla muutos tallentuu.
+
 ## Add a tag
 
 Linkin kautta pääsee lisäämään uuden tehtävän. Toiminto on vain kirjautuneiden, admin-roolin omaavien käyttäjien käytettävissä.
