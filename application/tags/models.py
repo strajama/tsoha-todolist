@@ -31,7 +31,7 @@ class Tag(Base):
         return response
 
     @staticmethod
-    def find_most_used_tags():
+    def find_used_tags():
         stmt=text("SELECT Tag.name, COUNT(*), SUM (Task.used_time) FROM Tag "
                     "INNER JOIN Tagtask ON Tagtask.tag_id = Tag.id "
                     "INNER JOIN Task ON Task.id = Tagtask.task_id "

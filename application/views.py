@@ -7,6 +7,6 @@ from application.tags.models import Tag
 def index():
     return render_template("index.html", 
             unstarted_tasks=User.find_users_with_unstarted_tasks(),
-            used_tags=Tag.find_tags_that_assigned_task(),
+            assigned_tags=Tag.find_tags_that_assigned_task(),
             tasks_roles=User.find_number_of_tasks_by_user_roles(),
-            most_used_tags=Tag.find_most_used_tags())
+            used_tags=Tag.find_used_tags())

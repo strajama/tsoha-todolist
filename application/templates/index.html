@@ -17,12 +17,12 @@
 
 {% endif %}
 
-{% if most_used_tags is defined and most_used_tags %}
+{% if used_tags is defined and used_tags %}
 <ul class="list-group list-group-flush">
   <li class="list-group-item list-group-item-primary">
-    The following tags are most used in tags
+    The following tags are used in tags
   </li>
-  {% for tag in most_used_tags %}
+  {% for tag in used_tags %}
   <li class="list-group-item"> 
     Tag "{{tag.name}}" is used in {{tag.count}} tasks. It has been used total of {{tag.sum}} hours.
   </li>
