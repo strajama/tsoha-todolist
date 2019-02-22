@@ -9,11 +9,9 @@
 * Käyttäjänä voin kirjautuneena lisätä uuden tehtävän.
 * Käyttäjänä voin kirjautuneena muokata tehtävää.
 * Käyttäjänä voin kirjautuneena poistaa tehtävän.
-* Käyttäjänä voin kirjautuneena lisätä uuden tagin.
-* Käyttäjänä voin kirjautuneena muokata tagia.
-* Käyttäjänä voin kirjautuneena poistaa tagin.
-
-## Suunnitelmissa
-* Käyttäjänä voin hakea tehtäviä
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
 * Käyttäjänä näen tehtäviin kiinnitetyt tagit.
+* Admin-käyttäjänä voin kirjautuneena lisätä uuden tagin.
+* Admin-käyttäjänä voin kirjautuneena muokata tagia.
+* Admin-käyttäjänä voin kirjautuneena poistaa tagin.
+
