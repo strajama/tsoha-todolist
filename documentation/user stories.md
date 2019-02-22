@@ -1,11 +1,14 @@
 # User stories
 
 ## Valmiit
-* Käyttäjänä näen keillä kirjautuneilla käyttäjillä ei ole tehtäviä
-* Käyttäjänä näen mitkä tagit ovat käytössä jonkin tehtävän kanssa
+* Käyttäjänä näen keillä kirjautuneilla käyttäjillä on ei-aloitettuja tehtäviä.
+* Käyttäjänä näen minkä verran mitäkin tagia on käytetty tehtävissä ja paljon tagin tehtäville on tehty työtä.
+* Käyttäjänä näen minkä verran mikäkin käyttäjätyyppi on luonut tehtäviä.
 * Käyttäjänä voin katsella tehtäviä listana.
-* Käyttäjänä voin luoda käyttäjätunnuksena
+' Käyttäjänä voin katsella tageja listana.
+* Käyttäjänä voin luoda käyttäjätunnuksena.
 * Käyttäjänä voin kirjautua sovellukseen.
+
 * Käyttäjänä voin kirjautuneena lisätä uuden tehtävän.
 * Käyttäjänä voin kirjautuneena muokata tehtävää.
 * Käyttäjänä voin kirjautuneena poistaa tehtävän.
