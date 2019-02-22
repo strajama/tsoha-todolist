@@ -18,7 +18,23 @@ Kirjautuneet käyttäjät voivat katsoa ja editoida tehtävän tageja Tags-linki
 
 ### Tags-linkki
 
+Linkistä avautuu näkymä, jossa ensimmäisenä näkyy tehtävään yhdistetyt tagit.
 
+Alaosassa on listattuna kaikki mahdolliset tagit ja näiden vieressä valintaruudut. Valintaruudun valitseminen ja Add or remove tags to the task -napin painaminen joko lisää tai poistaa tagin. Jos tagia ei ole vielä yhdistetty kyseiseen tehtävään, niin tagi lisätään sille ja jos tagi on yhdistetty tehtävään, niin se poistuu tehtävän yhteydestä.
+
+### Edit task -linkki
+
+Linkistä avautuu taulukko, jossa näkyy tehtävän nykyiset tiedot (Current data) ja kentät, joihin kirjoittamalla voi muokata niitä.
+
+Task name -rivillä on tehtävän nykyinen nimi ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+
+Description-rivillä on tehtävän nykyinen kuvailu ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+
+Estimated time -rivillä on tehtävän nykyinen arvioitu aikavaatimus ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+
+Time used -rivillä on tehtävään käytetty aika ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+
+Save changes -nappia painamalla uudet tiedot korvaavat nykyiset tiedot.
 
 ## Add a task
 
