@@ -16,6 +16,8 @@ Kirjautua voi luomalla omat tunnukset.
 
 [Käyttöohje](https://github.com/strajama/tsoha-todolist/blob/master/documentation/k%C3%A4ytt%C3%B6ohje.md)
 
+[Asennusohje](https://github.com/strajama/tsoha-todolist/blob/master/documentation/asennusohje.md)
+
 [User storyt](https://github.com/strajama/tsoha-todolist/blob/master/documentation/user%20stories.md)
 
 [Tietokantakaaviohahmotelma](https://github.com/strajama/tsoha-todolist/blob/master/documentation/tietokantakaaviohahmotelma.jpg) 
