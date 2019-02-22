@@ -56,7 +56,7 @@ Linkistä avautuu lista kaikista sovelluksissa olevista tageista ja ne näkyvät
 
 Listalla näkyy kaikki tagit, Edit tag -linkki ja Delete-nappi. Vain admin-roolin omaavat käyttäjät voivat poistaa tagin tai muokata sitä.
 
-## Edit tag -linkki
+### Edit tag -linkki
 
 Vain admin-roolin omaavat käyttäjät voivat käyttää tätä linkkiä.
 
