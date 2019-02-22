@@ -1,6 +1,6 @@
 # tsoha-Muistilista
 
-Muistilistasovellus, joka on tarkoitettu sekä yksittäisen henkilön että ryhmien käyttöön. Muistilistaan voi lisätä uusia tehtäviä, merkitä tehtäviä tehdyksi, muokata tehtäviä ja poistaa tehtäviä. Sovellukseen voi kirjautua. Sovellukseen voi lisätä projekteja, joissa on useita jaettuja tehtäviä, joita voi tehdä jokainen projektin jäsen. 
+Muistilistasovellus, joka on tarkoitettu yhden tai useamman henkilön käyttöön. Sovellukseen voi kirjautua. Muistilistaan voi lisätä uusia tehtäviä, merkitä tehtäviä tehdyksi, muokata tehtäviä, lisätä niihin tageja ja poistaa tehtäviä. Admin-oikeudet omaava käyttäjä voi luoda, muokata ja poistaa tageja. 
 
 ## Toimintoja:
 
