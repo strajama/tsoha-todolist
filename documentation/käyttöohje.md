@@ -66,6 +66,8 @@ Edit tag -linkistä pääsee muokkaamaan tagin nimen toiseksi ja Save changes -n
 
 Linkin kautta pääsee lisäämään uuden tehtävän. Toiminto on vain kirjautuneiden, admin-roolin omaavien käyttäjien käytettävissä.
 
+Uuden tagin luomiseksi sille pitää kirjoittaa nimi, joka on 2-144 merkkiä pitkä sekä painaa Add a new tag -nappia.
+
 ## Login
 
 Linkin kautta voi kirjautua sovellukseen.
