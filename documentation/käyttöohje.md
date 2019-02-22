@@ -12,6 +12,14 @@ Sovelluksessa liikutaan ylärivin linkkien kautta.
 
 Linkistä avautuu lista kaikista sovelluksissa olevista tehtävistä ja ne näkyvät kaikille käyttäjille.
 
+Tehtävät näkyvät taulukossa, jossa on tehtävän nimi (Task), kuvailu (Description), arvioitu aika (Estimated time), käytetty aika (Used time) ja omistaja (Owner).
+
+Kirjautuneet käyttäjät voivat katsoa ja editoida tehtävän tageja Tags-linkistä, editoida tehtävää Edit task -linkistä ja poistaa tehtävän Delete-napista.
+
+### Tags-linkki
+
+
+
 ## Add a task
 
 Linkin kautta pääsee lisäämään uuden tehtävän. Toiminto on vain kirjautuneiden käyttäjien käytettävissä.
