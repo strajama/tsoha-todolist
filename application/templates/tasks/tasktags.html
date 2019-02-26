@@ -1,35 +1,37 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<h1>{{ task.name }}</h1>
+<h1 class="text-uppercase">{{ task.name }}</h1>
 <ul class="list-group list-group-flush">
   <li class="list-group-item active">Current tags</li>
   {% for tag in task.tags %}
   <li class="list-group-item">{{ tag.name }}</li>
   {% endfor %}
 </ul>
-<form method="POST" class="form-group" action="{{ url_for('tasks_tags', task_id=task.id) }}">
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <th scope="col">Choose tags for task:</th>
-      <th scope="col">{{ task.name }}</th>
-    </thead>
-    {% for tag in tags %}
-    <tr>
-      <td>
-        <input type="checkbox" id={{ tag.id }} name="tags" value={{ tag.id }}>
-      </td>
-      <td>
-        <label for={{ tag.id }}>{{ tag.name }}</label>
-      </td>
-    </tr>
-    {% endfor %}
-    <tr>
-      <td colspan="2">
-        <input type="submit" class="btn btn-primary" value="Add or remove tags to the task"/>
-      </td>      
-    </tr>
-  </table>
-</form>
+{% if current_user.is_authenticated %}
+  <form method="POST" class="form-group" action="{{ url_for('tasks_tags', task_id=task.id) }}">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <th scope="col">Choose tags for task:</th>
+        <th scope="col">{{ task.name }}</th>
+      </thead>
+      {% for tag in tags %}
+      <tr>
+        <td>
+          <input type="checkbox" id={{ tag.id }} name="tags" value={{ tag.id }}>
+        </td>
+        <td>
+          <label for={{ tag.id }}>{{ tag.name }}</label>
+        </td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2">
+          <input type="submit" class="btn btn-primary" value="Add or remove tags to the task"/>
+        </td>      
+      </tr>
+    </table>
+  </form>
+{% endif %}
 
 {% endblock %}

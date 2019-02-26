@@ -90,7 +90,6 @@ def tasks_addTime(task_id):
     return redirect(url_for("tasks_index"))
 
 @app.route("/tasks//tasktags/<task_id>", methods=["GET"])
-@login_required
 def tasks_tagsget(task_id):
     return render_template("tasks/tasktags.html", task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
 
