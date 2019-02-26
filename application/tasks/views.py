@@ -95,6 +95,8 @@ def tasks_addTime(task_id):
     print('addtime')
     task = Task.query.get(task_id)
     task.used_time = task.used_time + 1
+    if (task.used_time > task.estimated_time):
+        task.estimated_time = task.used_time
 
     db.session.commit()
 
