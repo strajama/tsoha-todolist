@@ -41,8 +41,12 @@ def tasks_edit(task_id):
 @app.route("/tasks/edit/<task_id>/", methods=["POST"])
 @login_required
 def tasks_editor(task_id):
+
     form = TaskForm(request.form)
     task = Task.query.get(task_id)
+
+    if (current_user.id != task.account_id): 
+        return redirect(url_for("tasks_index"))
 
     if form.name.data:
         if not form.validate():
@@ -63,14 +67,26 @@ def tasks_editor(task_id):
 
     return redirect(url_for("tasks_edit", task_id = task_id))
   
-@app.route("/tasks/<task_id>/", methods=["POST"])
+@app.route("/tasks/<task_id>/delete", methods=["POST"])
 @login_required
 def tasks_delete(task_id):
+    print('delete')
     task = Task.query.get(task_id)
 
     db.session.delete(task)
     db.session().commit()
   
+    return redirect(url_for("tasks_index"))
+
+@app.route("/tasks/<task_id>/", methods=["POST"])
+@login_required
+def tasks_addTime(task_id):
+    print('addtime')
+    task = Task.query.get(task_id)
+    task.used_time = task.used_time + 1
+
+    db.session.commit()
+
     return redirect(url_for("tasks_index"))
 
 @app.route("/tasks//tasktags/<task_id>", methods=["GET"])

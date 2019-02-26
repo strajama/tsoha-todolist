@@ -10,22 +10,42 @@
     <th scope="col">Show and edit tags</th>
     <th scope="col">Edit task</th>
     <th scope="col">Owner</th>
+    <th scope="col">Add time</th>
     <th scope="col">Delete</th>
   </thead> 
   {% for task in tasks %}
   <tr>
-    <td>{{ task.name }}</td>
+    <td class="text-uppercase">{{ task.name }}</td>
     <td>{{ task.description }}</td>
     <td>{{ task.estimated_time }}</td>
     <td>{{ task.used_time }}</td>
     <td><a class="page-link" href="{{ url_for('tasks_tagsget', task_id=task.id) }}">Tags</a></td>
-    <td><a class="page-link" href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a></td>
+    {% if task.account_id == current_user.id %}
+      <td>
+        <a class="page-link" href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a>
+      </td>
+    {% else %}
+      <td class="p-3 mb-2 bg-info text-white">Owner only</td>
+    {% endif %}
     <td>{{ task.username }}</td>
-    <td>
+    {% if current_user.is_authenticated %}
+      <td>
+        <form method="POST" class="form-group" action="{{ url_for('tasks_addTime', task_id=task.id) }}">
+          <input type="submit" class="btn btn-primary" value="Add time"/>
+        </form>
+      </td>
+    {% else %}
+      <td class="p-3 mb-2 bg-secondary text-white">Users only</td>
+    {% endif %}
+    {% if current_user.role == 'admin'%}
+      <td>
         <form method="POST" class="form-group" action="{{ url_for('tasks_delete', task_id=task.id) }}">
           <input type="submit" class="btn btn-danger" value="Delete"/>
         </form>
-    </td>
+      </td>
+    {% else %}
+      <td class="p-3 mb-2 bg-info text-white">Admin only</td>
+    {% endif %}
   </tr>
   {% endfor %}
 </table>
