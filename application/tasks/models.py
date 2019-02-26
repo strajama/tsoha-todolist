@@ -31,8 +31,18 @@ class Task(Base):
         self.estimated_time = estimated_time
 
     @staticmethod
-    def find_user(id):
-        stmt = text("SELECT Account.name FROM Account WHERE (Account.id = :id);").params(id=id)
+    def find_users_tasks(id):
+        stmt = text("SELECT Task.name FROM Task WHERE (Task.Account_id = :id);").params(id=id)
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"name":row[0]})
+
+        return response
+
+    @staticmethod
+    def find_task_id(name):
+        stmt =text("SELECT Task.id FROM Task WHERE (Task.name = :name);").params(name=name)
         res = db.engine.execute(stmt)
         response = []
         for row in res:

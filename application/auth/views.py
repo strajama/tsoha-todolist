@@ -4,6 +4,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from application import app, db
 from application.auth.models import User
 from application.auth.forms import LoginForm
+from application.tasks.models import Task
 
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
@@ -46,7 +47,7 @@ def auth_create():
 @login_required
 def auth_information():
 
-    return render_template("auth/information.html", form = LoginForm())
+    return render_template("auth/information.html", form = LoginForm(), tasks = Task.find_users_tasks(current_user.id))
 
 @app.route("/auth/information/", methods = ["POST"])
 @login_required

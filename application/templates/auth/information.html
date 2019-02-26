@@ -47,13 +47,30 @@
                     </ul>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <input type="submit" class="btn btn-primary" value="Save changes"/>
+                </td>
+            </tr>
+    </table>
+</form>
 
-            <td colspan="2">
-              <input type="submit" class="btn btn-primary" value="Save changes"/>
-            </td>
-          </tr>
-        </table>
-      </form>
+{% if tasks is defined and tasks%}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item list-group-item-primary">
+    {{ current_user.name }} owns these tasks:
+  </li>
+  {% for task in tasks %}
+  <li class="list-group-item"> 
+    {{task.name}}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+    <div class="alert alert-warning" role="alert">
+        {{current_user.name}} doesn't own any tasks.
+    </div>
+{% endif %}
 
 {% else %}
     <div class="alert alert-warning" role="alert">
