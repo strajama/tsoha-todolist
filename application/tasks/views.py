@@ -49,19 +49,30 @@ def tasks_editor(task_id):
         return redirect(url_for("tasks_index"))
 
     if form.name.data:
-        if not form.validate():
+        if len(form.name.data) > 30 or len(form.name.data) < 2:
             return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
         else:
             task.name = form.name.data
 
     if form.description.data:
-        task.description = form.description.data
+        if len(form.description.data) > 60:
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
+        else:
+            task.description = form.description.data
 
     if form.estimated_time.data:
-        task.estimated_time = form.estimated_time.data
+        if form.estimated_time.data < 1 or form.estimated_time.data > 999:
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
+        else:
+            task.estimated_time = form.estimated_time.data
 
     if form.used_time.data:
-        task.used_time = form.used_time.data
+        if form.used_time.data < 0 or form.used_time.data > 999:
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
+        else:
+            task.used_time = form.used_time.data
+            if task.used_time > task.estimated_time:
+                task.estimated_time = task.used_time
 
     db.session().commit()
 

@@ -8,7 +8,7 @@ from sqlalchemy.sql import text
 class Tag(Base):
     __tablename__ = 'tag'
 
-    name = db.Column(db.String(144), nullable=False)
+    name = db.Column(db.String(30), nullable=False)
 
     tasks = db.relationship('Task', secondary=tagtask, back_populates='tags')
 

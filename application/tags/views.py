@@ -41,7 +41,7 @@ def tags_editor(tag_id):
     tag = Tag.query.get(tag_id)
 
     if form.name.data:
-        if not form.validate():
+        if len(form.name.data) < 2 or len(form.name.data) > 30:
             return render_template("tags/new.html", form = form)
         else:
             tag.name = form.name.data

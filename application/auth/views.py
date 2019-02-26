@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user, login_required
   
 from application import app, db
 from application.auth.models import User
@@ -41,3 +41,40 @@ def auth_create():
     db.session().commit()
 
     return redirect(url_for("auth_login"))
+
+@app.route("/auth/information/", methods = ["GET"])
+@login_required
+def auth_information():
+
+    return render_template("auth/information.html", form = LoginForm())
+
+@app.route("/auth/information/", methods = ["POST"])
+@login_required
+def auth_info():
+
+    form = LoginForm(request.form)
+    user = User.query.get(current_user.id)
+
+    if form.name.data:
+        print('tässä ollaan')
+        if len(form.name.data) > 20 or len(form.name.data) < 2:
+            return render_template("auth/information.html", form = LoginForm())
+        else:
+            print(form.name.data)
+            user.name = form.name.data
+
+    if form.username.data:
+        if len(form.username.data) > 20 or len(form.username.data) < 2:
+            return render_template("auth/information.html", form = LoginForm())
+        else:
+            user.username = form.username.data
+
+    if form.password.data:
+        if len(form.password.data) > 20 or len(form.password.data) < 2:
+            return render_template("auth/information.html", form = LoginForm())
+        else:
+            user.password = form.password.data
+
+    db.session().commit()
+
+    return redirect(url_for("auth_information"))

@@ -11,16 +11,19 @@ tagtask = db.Table('tagtask',
 class Task(Base):
     __tablename__ = 'task'
 
-    name = db.Column(db.String(144), nullable=False)
-    description = db.Column(db.String(1000))
+    name = db.Column(db.String(30), nullable=False)
+    description = db.Column(db.String(60))
     estimated_time = db.Column(db.Integer())
     used_time = db.Column(db.Integer())
-    username = db.Column(db.String(144))
+    username = db.Column(db.String(20))
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
 
     tags = db.relationship('Tag', secondary='tagtask', back_populates='tasks')
+
+    db.Index('indexname', 'name')
+    db.Index('indexuser', 'account_id')
 
     def __init__(self, name, description, estimated_time):
         self.name = name

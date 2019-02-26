@@ -6,10 +6,10 @@ from sqlalchemy.sql import text
 class User(Base):
     __tablename__ = 'account'
   
-    name = db.Column(db.String(144), nullable=False)
-    username = db.Column(db.String(144), nullable=False)
-    password = db.Column(db.String(144), nullable=False)
-    role = db.Column(db.String(144), nullable=False)
+    name = db.Column(db.String(20), nullable=False)
+    username = db.Column(db.String(20), nullable=False)
+    password = db.Column(db.String(20), nullable=False)
+    role = db.Column(db.String(20), nullable=False)
     tasks = db.relationship("Task", backref='account', lazy=True)
 
     def __init__(self, name, username, password, role):

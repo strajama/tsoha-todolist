@@ -2,16 +2,13 @@
   
 {% block body %}
 <form method="POST" class="form-group" action="{{ url_for('tags_editor', tag_id=tag.id) }}">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{ form.name.label }}</li>
-      <li class="list-group-item">{{ tag.name }}</li>
-      <li class="list-group-item">{{ form.name }}</li>
-      <li class="list-group-item">
-        <input type="submit" class="btn btn-primary" value="Save changes"/>
-      </li>
-      {% for error in form.name.errors %}
-      <li class="list-group-item">{{ error }}</li>
-      {% endfor %}
-    </ul>
-  </form>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ form.name.label }}</li>
+    <li class="list-group-item">{{ tag.name }}</li>
+    <li class="list-group-item">{{ form.name }}</li>
+    <li class="list-group-item">
+      <input type="submit" class="btn btn-primary" value="Save changes"/>
+    </li>
+  </ul>
+</form>
 {% endblock %}
