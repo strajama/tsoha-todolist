@@ -33,6 +33,9 @@ class User(Base):
     def roles(self):
         return [self.role]
 
+    def printpassword(self):
+        return "*" * len(self.password)
+        
     @staticmethod
     def find_users_with_no_tasks(susanna="kesken"):
         stmt = text("SELECT Account.id, Account.name FROM Account"

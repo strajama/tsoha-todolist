@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <td>{{ form.password.label }}:</td>
-                <td input type="password">{{current_user.password }} </td>
+                <td>{{current_user.printpassword() }} </td>
                 <td>{{ form.password }}</td>
                 <td>
                     <ul>
@@ -48,7 +48,10 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="4">{{ current_user.role }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">
                     <input type="submit" class="btn btn-primary" value="Save changes"/>
                 </td>
             </tr>
