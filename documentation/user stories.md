@@ -26,16 +26,16 @@
 ## Kirjautunut käyttäjä
 
 * Käyttäjänä voin kirjautuneena lisätä uuden tehtävän.
- * INSERT INTO task (date_created, date_modified, name, description, estimated_time, used_time, username, account_id) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, 0, current_user.id, current_user.name)
+  * INSERT INTO task (date_created, date_modified, name, description, estimated_time, used_time, username, account_id) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, 0, current_user.id, current_user.name)
 
 * Käyttäjänä voin kirjautuneena muokata itse luomaani tehtävää.
- * UPDATE task SET date_modified=CURRENT_TIMESTAMP, name=?, description=?, estimated_time=?, used_time=? WHERE task.id = ?
+  * UPDATE task SET date_modified=CURRENT_TIMESTAMP, name=?, description=?, estimated_time=?, used_time=? WHERE task.id = ?
 
 * Käyttäjänä voin lisätä napista eri tehtäville tehtyjä tunteja
- * UPDATE task SET date_modified=CURRENT_TIMESTAMP, used_time=? WHERE task.id = ?
+  * UPDATE task SET date_modified=CURRENT_TIMESTAMP, used_time=? WHERE task.id = ?
 
 * Käyttäjänä näen tehtäviin kiinnitetyt tagit.
- * SELECT tag.id AS tag_id, tag.date_created AS tag_date_created, tag.date_modified AS tag_date_modified, tag.name AS tag_name 
+  * SELECT tag.id AS tag_id, tag.date_created AS tag_date_created, tag.date_modified AS tag_date_modified, tag.name AS tag_name 
 FROM tag, tagtask 
 WHERE ? = tagtask.task_id AND tag.id = tagtask.tag_id
 
