@@ -31,10 +31,14 @@
 * Käyttäjänä voin kirjautuneena muokata itse luomaani tehtävää.
  * UPDATE task SET date_modified=CURRENT_TIMESTAMP, name=?, description=?, estimated_time=?, used_time=? WHERE task.id = ?
 
-* Käyttäjänä voin kirjautuneena poistaa tehtävän.
+* Käyttäjänä voin lisätä napista eri tehtäville tehtyjä tunteja
+ * UPDATE task SET date_modified=CURRENT_TIMESTAMP, used_time=? WHERE task.id = ?
+
+
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
 * Käyttäjänä näen tehtäviin kiinnitetyt tagit.
 * Admin-käyttäjänä voin kirjautuneena lisätä uuden tagin.
 * Admin-käyttäjänä voin kirjautuneena muokata tagia.
 * Admin-käyttäjänä voin kirjautuneena poistaa tagin.
 
+* Käyttäjänä voin kirjautuneena poistaa tehtävän.
