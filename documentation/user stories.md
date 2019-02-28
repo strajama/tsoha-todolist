@@ -40,13 +40,32 @@ FROM tag, tagtask
 WHERE ? = tagtask.task_id AND tag.id = tagtask.tag_id
 
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
- * INSERT INTO tagtask (tag_id, task_id) VALUES (?, ?)
+  * INSERT INTO tagtask (tag_id, task_id) VALUES (?, ?)
  
 * Käyttäjänä voin kirjautuneena poistaa tehtävältä tageja
- * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ?
+  * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ?
+  
+* Käyttäjänä voin kirjautuneena katsoa oman käyttäjätilini tietoja ja nähdä minkä nimisiä tehtäviä olen luonut
+  * SELECT account.id AS account_id, account.date_created AS account_date_created, account.date_modified AS account_date_modified, account.name AS account_name, account.username AS account_username, account.password AS account_password, account.role AS account_role 
+FROM account 
+WHERE account.id = ?
+  * SELECT Task.name FROM Task WHERE (Task.Account_id = ?);
+
+* Käyttäjänä voin kirjautuneena muokata oman käyttäjätilini tietoja roolia lukuunottamatta
+  * UPDATE account SET date_modified=CURRENT_TIMESTAMP, name=?, username=?, password=? WHERE account.id = ?
+  
+# Admin-roolinen kirjautunut käyttäjä
 
 * Admin-käyttäjänä voin kirjautuneena lisätä uuden tagin.
-* Admin-käyttäjänä voin kirjautuneena muokata tagia.
+  * INSERT INTO tag (date_created, date_modified, name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?)
+  
+* Admin-käyttäjänä voin kirjautuneena muokata tageja.
+  * UPDATE tag SET date_modified=CURRENT_TIMESTAMP, name=? WHERE tag.id = ?
+
 * Admin-käyttäjänä voin kirjautuneena poistaa tagin.
+  * DELETE FROM tag WHERE tag.id = ?
+  * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ? (jos tagi on yhdistetty tehtävään)
 
 * Käyttäjänä voin kirjautuneena poistaa tehtävän.
+  * DELETE FROM task WHERE task.id = ?
+  * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ? (jos tehtävään on yhdistetty tagi)
