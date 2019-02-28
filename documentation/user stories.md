@@ -22,8 +22,12 @@
 
 * Käyttäjänä voin kirjautua sovellukseen.
   * SELECT account.id AS account_id, account.date_created AS account_date_created, account.date_modified AS account_date_modified, account.name AS account_name, account.username AS account_username, account.password AS account_password, account.role AS account_role
+  
+## Kirjautunut käyttäjä
 
 * Käyttäjänä voin kirjautuneena lisätä uuden tehtävän.
+ * INSERT INTO task (date_created, date_modified, name, description, estimated_time, used_time, username, account_id) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, 0, current_user.id, current_user.name)
+
 * Käyttäjänä voin kirjautuneena muokata tehtävää.
 * Käyttäjänä voin kirjautuneena poistaa tehtävän.
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
