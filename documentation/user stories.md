@@ -34,9 +34,17 @@
 * Käyttäjänä voin lisätä napista eri tehtäville tehtyjä tunteja
  * UPDATE task SET date_modified=CURRENT_TIMESTAMP, used_time=? WHERE task.id = ?
 
+* Käyttäjänä näen tehtäviin kiinnitetyt tagit.
+ * SELECT tag.id AS tag_id, tag.date_created AS tag_date_created, tag.date_modified AS tag_date_modified, tag.name AS tag_name 
+FROM tag, tagtask 
+WHERE ? = tagtask.task_id AND tag.id = tagtask.tag_id
 
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
-* Käyttäjänä näen tehtäviin kiinnitetyt tagit.
+ * INSERT INTO tagtask (tag_id, task_id) VALUES (?, ?)
+ 
+* Käyttäjänä voin kirjautuneena poistaa tehtävältä tageja
+ * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ?
+
 * Admin-käyttäjänä voin kirjautuneena lisätä uuden tagin.
 * Admin-käyttäjänä voin kirjautuneena muokata tagia.
 * Admin-käyttäjänä voin kirjautuneena poistaa tagin.
