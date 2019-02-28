@@ -68,6 +68,10 @@ Linkin kautta pääsee lisäämään uuden tehtävän. Toiminto on vain kirjautu
 
 Uuden tagin luomiseksi sille pitää kirjoittaa nimi, joka on 2-144 merkkiä pitkä sekä painaa Add a new tag -nappia.
 
+## User information
+
+Linkin kautta näkee kirjautuneen käyttäjän käyttäjätilin tiedot (nimi, käyttäjätunnus ja salasana, rooli) ja tehtävät sekä pääsee muokkaamaan käyttäjätilin tiedoista nimeä, käyttäjätunnusta ja salasanaa.
+
 ## Login
 
 Linkin kautta voi kirjautua sovellukseen.
