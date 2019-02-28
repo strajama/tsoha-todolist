@@ -28,7 +28,9 @@
 * Käyttäjänä voin kirjautuneena lisätä uuden tehtävän.
  * INSERT INTO task (date_created, date_modified, name, description, estimated_time, used_time, username, account_id) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, 0, current_user.id, current_user.name)
 
-* Käyttäjänä voin kirjautuneena muokata tehtävää.
+* Käyttäjänä voin kirjautuneena muokata itse luomaani tehtävää.
+ * UPDATE task SET date_modified=CURRENT_TIMESTAMP, name=?, description=?, estimated_time=?, used_time=? WHERE task.id = ?
+
 * Käyttäjänä voin kirjautuneena poistaa tehtävän.
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
 * Käyttäjänä näen tehtäviin kiinnitetyt tagit.
