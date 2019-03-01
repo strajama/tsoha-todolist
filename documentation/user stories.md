@@ -69,13 +69,14 @@ WHERE account.id = ?
 * Admin-käyttäjänä voin kirjautuneena lisätä uuden tagin.
   * INSERT INTO tag (date_created, date_modified, name) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?)
   
-* Admin-käyttäjänä voin kirjautuneena muokata tageja.
+* Admin-käyttäjänä voin kirjautuneena muokata tagin nimeä, mutta en sellaiseksi, joka on jo olemassa.
   * UPDATE tag SET date_modified=CURRENT_TIMESTAMP, name=? WHERE tag.id = ?
+  * SELECT COUNT(*) FROM Tag WHERE (Tag.name = ?) GROUP BY Tag.name
 
 * Admin-käyttäjänä voin kirjautuneena poistaa tagin.
   * DELETE FROM tag WHERE tag.id = ?
   * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ? (jos tagi on yhdistetty tehtävään)
 
-* Käyttäjänä voin kirjautuneena poistaa tehtävän.
+* Admin-käyttäjänä voin kirjautuneena poistaa tehtävän.
   * DELETE FROM task WHERE task.id = ?
   * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ? (jos tehtävään on yhdistetty tagi)
