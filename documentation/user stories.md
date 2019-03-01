@@ -48,14 +48,12 @@ WHERE account.password = ? AND account.username = ?
 * Käyttäjänä voin lisätä napista eri tehtäville tehtyjä tunteja
   * UPDATE task SET date_modified=CURRENT_TIMESTAMP, used_time=? WHERE task.id = ?
 
-
-
-
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
   * INSERT INTO tagtask (tag_id, task_id) VALUES (?, ?)
  
-* Käyttäjänä voin kirjautuneena poistaa tehtävältä tageja
+* Käyttäjänä voin kirjautuneena poistaa tehtävältä tageja.
   * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ?
+
   
 * Käyttäjänä voin kirjautuneena katsoa oman käyttäjätilini tietoja ja nähdä minkä nimisiä tehtäviä olen luonut
   * SELECT account.id AS account_id, account.date_created AS account_date_created, account.date_modified AS account_date_modified, account.name AS account_name, account.username AS account_username, account.password AS account_password, account.role AS account_role 
