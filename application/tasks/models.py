@@ -22,9 +22,6 @@ class Task(Base):
 
     tags = db.relationship('Tag', secondary='tagtask', back_populates='tasks')
 
-    db.Index('indexname', 'name')
-    db.Index('indexuser', 'account_id')
-
     def __init__(self, name, description, estimated_time):
         self.name = name
         self.description = description

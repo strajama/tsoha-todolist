@@ -12,6 +12,8 @@ class Tag(Base):
 
     tasks = db.relationship('Task', secondary=tagtask, back_populates='tags')
 
+    db.Index('indexname', 'name')
+
     def __init__(self, name):
         self.name = name
 

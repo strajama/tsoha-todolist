@@ -12,6 +12,8 @@ class User(Base):
     role = db.Column(db.String(20), nullable=False)
     tasks = db.relationship("Task", backref='account', lazy=True)
 
+    db.Index('indexusername', 'username')
+
     def __init__(self, name, username, password, role):
         self.name = name
         self.username = username
