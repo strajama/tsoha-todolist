@@ -60,6 +60,7 @@ def tasks_editor(task_id):
 
     if form.estimated_time.data:
         task.estimated_time = form.estimated_time.data
+        checkEstimatedTime(task)
 
     if form.used_time.data:
         task.used_time = form.used_time.data
