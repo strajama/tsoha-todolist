@@ -10,29 +10,37 @@ Sovelluksessa liikutaan ylärivin linkkien kautta.
 
 ## List tasks
 
-Linkistä avautuu lista kaikista sovelluksissa olevista tehtävistä ja ne näkyvät kaikille käyttäjille.
+Linkistä avautuu lista sadasta aakkosissa ensimmäisestä sovelluksessa olevista tehtävistä ja ne näkyvät kaikille käyttäjille. Listalla näkyviä tehtäviä voi filtteröidä nimen perusteella hakukentän avulla.
 
 Tehtävät näkyvät taulukossa, jossa on tehtävän nimi (Task), kuvailu (Description), arvioitu aika (Estimated time), käytetty aika (Used time) ja omistaja (Owner).
 
-Kirjautuneet käyttäjät voivat katsoa ja editoida tehtävän tageja Tags-linkistä, editoida tehtävää Edit task -linkistä ja poistaa tehtävän Delete-napista.
+Käyttäjät voivat katsoa ja kirjautuneet käyttäjät lisätä ja poistaa tehtävän tageja Tags-linkistä.
+
+Itse tekemäänsä tehtävää voi kirjautunut käyttäjä editoida tehtävää Edit task -linkistä.
+
+Kirjautuneet käyttäjät voivat "Add time" -nappia painamalla lisätä tehtävän Used time -sarakkeen arvoa yhdellä. Jos Used time -sarakkeen arvo kasvaa isommaksi kuin Estimated time -sarakkeen, niin myös sitä kasvatetaan.
+
+Admin-oikeuksinen käyttäjä voi poistaa tehtävän Delete-napista.
 
 ### Tags-linkki
 
 Linkistä avautuu näkymä, jossa ensimmäisenä näkyy tehtävään yhdistetyt tagit.
 
-Alaosassa on listattuna kaikki mahdolliset tagit ja näiden vieressä valintaruudut. Valintaruudun valitseminen ja Add or remove tags to the task -napin painaminen joko lisää tai poistaa tagin. Jos tagia ei ole vielä yhdistetty kyseiseen tehtävään, niin tagi lisätään sille ja jos tagi on yhdistetty tehtävään, niin se poistuu tehtävän yhteydestä.
+Alaosassa on listattuna sata tagia ja näiden vieressä valintaruudut. Tagien näkymää voi filtteröidä nimen perusteella.
+
+Valintaruudun valitseminen ja Add or remove tags to the task -napin painaminen joko lisää tai poistaa tagin. Jos tagia ei ole vielä yhdistetty kyseiseen tehtävään, niin tagi lisätään sille ja jos tagi on yhdistetty tehtävään, niin se poistuu tehtävän yhteydestä.
 
 ### Edit task -linkki
 
 Linkistä avautuu taulukko, jossa näkyy tehtävän nykyiset tiedot (Current data) ja kentät, joihin kirjoittamalla voi muokata niitä.
 
-Task name -rivillä on tehtävän nykyinen nimi ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+Task name -rivillä on tehtävän nykyinen nimi ja kenttä, johon kirjoittamalla sitä voi muuttaa. Nimen pitää olla 2-30 merkkiä pitkä.
 
-Description-rivillä on tehtävän nykyinen kuvailu ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+Description-rivillä on tehtävän nykyinen kuvailu ja kenttä, johon kirjoittamalla sitä voi muuttaa. Kuvailu voi olla tyhjä tai korkeintaan 60 merkkiä.
 
-Estimated time -rivillä on tehtävän nykyinen arvioitu aikavaatimus ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+Estimated time -rivillä on tehtävän nykyinen arvioitu aikavaatimus ja kenttä, johon kirjoittamalla sitä voi muuttaa. Luvun tulee olla 1-999 välillä. Jos muokattu luku on pienempi kuin used time -rivin arvo, niin sovellus päivittää sen samaksi kuin used time.
 
-Time used -rivillä on tehtävään käytetty aika ja kenttä, johon kirjoittamalla sitä voi muuttaa.
+Time used -rivillä on tehtävään käytetty aika ja kenttä, johon kirjoittamalla sitä voi muuttaa. Luvun tulee olla 0-999 välillä.
 
 Save changes -nappia painamalla uudet tiedot korvaavat nykyiset tiedot.
 
@@ -40,9 +48,9 @@ Save changes -nappia painamalla uudet tiedot korvaavat nykyiset tiedot.
 
 Linkin kautta pääsee lisäämään uuden tehtävän. Toiminto on vain kirjautuneiden käyttäjien käytettävissä.
 
-Task name -kenttään kirjoitetaan tehtävän nimi, jonka tulee olla 2-144 merkkiä pitkä.
+Task name -kenttään kirjoitetaan tehtävän nimi, jonka tulee olla 2-30 merkkiä pitkä.
 
-Description-kenttään kirjoitetaan tehtävän kuvailu. Tämän kentän voi jättää tyhjäksi.
+Description-kenttään kirjoitetaan tehtävän kuvailu. Tämän kentän voi jättää tyhjäksi ja siihen mahtuu 60 merkkiä.
 
 Estimated time -kenttään kirjoitetaan arvio siitä paljonko tehtävään käytetään aikaa lukuna 1-999 välillä.
 
