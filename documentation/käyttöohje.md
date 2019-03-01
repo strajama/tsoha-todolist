@@ -60,25 +60,25 @@ Tehtävän luonnin jälkeen aukeaa lista kaikista tehtävistä.
 
 ## List tags
 
-Linkistä avautuu lista kaikista sovelluksissa olevista tageista ja ne näkyvät kaikille käyttäjille.
+Linkistä avautuu lista aakkosissa sadasta ensimmäisestä sovelluksessa olevista tageista ja ne näkyvät kaikille käyttäjille.
 
-Listalla näkyy kaikki tagit, Edit tag -linkki ja Delete-nappi. Vain admin-roolin omaavat käyttäjät voivat poistaa tagin tai muokata sitä.
+Listalla näkyvät tagien nimet. Vain admin-roolin omaavat käyttäjät näkevät Edit tag -linkin ja Delete-napin ja voivat poistaa tagin tai muokata sitä.
 
 ### Edit tag -linkki
 
 Vain admin-roolin omaavat käyttäjät voivat käyttää tätä linkkiä.
 
-Edit tag -linkistä pääsee muokkaamaan tagin nimen toiseksi ja Save changes -nappia painamalla muutos tallentuu.
+Edit tag -linkistä pääsee muokkaamaan tagin nimen toiseksi ja Save changes -nappia painamalla muutos tallentuu. Nimen tulee olla uniikki eikä ohjelma anna muuttaa samannimiseksi kuin jokin toinen tagi.
 
 ## Add a tag
 
 Linkin kautta pääsee lisäämään uuden tehtävän. Toiminto on vain kirjautuneiden, admin-roolin omaavien käyttäjien käytettävissä.
 
-Uuden tagin luomiseksi sille pitää kirjoittaa nimi, joka on 2-144 merkkiä pitkä sekä painaa Add a new tag -nappia.
+Uuden tagin luomiseksi sille pitää kirjoittaa uniikki nimi, joka on 2-30 merkkiä pitkä sekä painaa Add a new tag -nappia.
 
 ## User information
 
-Linkin kautta näkee kirjautuneen käyttäjän käyttäjätilin tiedot (nimi, käyttäjätunnus ja salasana, rooli) ja tehtävät sekä pääsee muokkaamaan käyttäjätilin tiedoista nimeä, käyttäjätunnusta ja salasanaa.
+Linkin kautta näkee kirjautuneen käyttäjän käyttäjätilin tiedot (nimi, käyttäjätunnus ja salasana, rooli) ja tehtävät sekä pääsee muokkaamaan käyttäjätilin tiedoista nimeä, käyttäjätunnusta ja salasanaa. Käyttäjätunnukesen tulee olla uniikki.
 
 ## Login
 
@@ -94,13 +94,13 @@ Linkin kautta voi luoda uudet käyttäjätunnukset.
 
 ### Uusien käyttäjätunnusten luominen
 
-Name-kenttään kirjoitetaan nimi, jota sovelluksessa haluaa käyttää.
+Name-kenttään kirjoitetaan nimi, jota sovelluksessa haluaa käyttää. Nimen tulee olla 2-20 merkkiä pitkä.
 
-Username-kenttään kirjoitetaan käyttäjätunnus, jota käytetään kirjautuessa. Se on pakollinen ja pituudeltaan oltava vähintään kaksi merkkiä.
+Username-kenttään kirjoitetaan käyttäjätunnus, jota käytetään kirjautuessa. Se on pakollinen ja pituudeltaan oltava vähintään kaksi merkkiä. Käyttäjätunnukesen tulee olla uniikki ja 2-20 merkkiä pitkä.
 
-Password-kenttään kirjoitetaan salasana.
+Password-kenttään kirjoitetaan salasana, jonka tulee olla 8-20 merkkiä pitkä.
 
-Role-valikosta valitaan käyttäjärooli.
+Role-valikosta valitaan käyttäjärooliksi joko admin tai worker.
 
 Sign in new user -nappi luo uudet käyttäjätunnukset.
 
