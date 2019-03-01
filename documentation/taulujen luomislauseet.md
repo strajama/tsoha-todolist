@@ -2,30 +2,32 @@ CREATE TABLE account (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
 	date_modified DATETIME, 
-	name VARCHAR(144) NOT NULL, 
-	username VARCHAR(144) NOT NULL, 
-	password VARCHAR(144) NOT NULL, 
-	role VARCHAR(144) NOT NULL, 
-	PRIMARY KEY (id)
+	name VARCHAR(20) NOT NULL, 
+	username VARCHAR(20) NOT NULL, 
+	password VARCHAR(20) NOT NULL, 
+	role VARCHAR(20) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (username)
 )
 
 CREATE TABLE tag (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
 	date_modified DATETIME, 
-	name VARCHAR(144) NOT NULL, 
-	PRIMARY KEY (id)
+	name VARCHAR(30) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (name)
 )
 
 CREATE TABLE task (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
 	date_modified DATETIME, 
-	name VARCHAR(144) NOT NULL, 
-	description VARCHAR(1000), 
+	name VARCHAR(30) NOT NULL, 
+	description VARCHAR(60), 
 	estimated_time INTEGER, 
 	used_time INTEGER, 
-	username VARCHAR(144), 
+	username VARCHAR(20), 
 	account_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(account_id) REFERENCES account (id)
