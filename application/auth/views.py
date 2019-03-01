@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, current_user, login_required
   
 from application import app, db
 from application.auth.models import User
-from application.auth.forms import LoginForm
+from application.auth.forms import LoginForm, UserForm
 from application.tasks.models import Task
 
 @app.route("/auth/login", methods = ["GET", "POST"])
@@ -47,34 +47,27 @@ def auth_create():
 @login_required
 def auth_information():
 
-    return render_template("auth/information.html", form = LoginForm(), tasks = Task.find_users_tasks(current_user.id))
+    return render_template("auth/information.html", form = UserForm(), tasks = Task.find_users_tasks(current_user.id))
 
 @app.route("/auth/information/", methods = ["POST"])
 @login_required
 def auth_info():
 
-    form = LoginForm(request.form)
+    form = UserForm(request.form)
     user = User.query.get(current_user.id)
 
+    if not form.validate():
+        return render_template("auth/information.html", form = UserForm(), tasks = Task.find_users_tasks(current_user.id))
+
     if form.name.data:
-        print('tässä ollaan')
-        if len(form.name.data) > 20 or len(form.name.data) < 2:
-            return render_template("auth/information.html", form = LoginForm())
-        else:
-            print(form.name.data)
-            user.name = form.name.data
+        user.name = form.name.data
 
     if form.username.data:
-        if len(form.username.data) > 20 or len(form.username.data) < 2:
-            return render_template("auth/information.html", form = LoginForm())
-        else:
+        if not User.unique_username(form.username.data):
             user.username = form.username.data
 
     if form.password.data:
-        if len(form.password.data) > 20 or len(form.password.data) < 2:
-            return render_template("auth/information.html", form = LoginForm())
-        else:
-            user.password = form.password.data
+        user.password = form.password.data
 
     db.session().commit()
 

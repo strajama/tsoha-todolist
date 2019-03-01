@@ -32,7 +32,7 @@ class Task(Base):
 
     @staticmethod
     def find_users_tasks(id):
-        stmt = text("SELECT Task.name FROM Task WHERE (Task.Account_id = :id);").params(id=id)
+        stmt = text("SELECT Task.name FROM Task WHERE (Task.Account_id = :id) LIMIT (100);").params(id=id)
         res = db.engine.execute(stmt)
         response = []
         for row in res:
@@ -46,6 +46,6 @@ class Task(Base):
         res = db.engine.execute(stmt)
         response = []
         for row in res:
-            response.append({"name":row[0]})
+            response.append({"id":row[0]})
 
         return response

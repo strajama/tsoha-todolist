@@ -8,7 +8,7 @@ from sqlalchemy.sql import text
 class Tag(Base):
     __tablename__ = 'tag'
 
-    name = db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String(30), nullable=False, unique=True)
 
     tasks = db.relationship('Task', secondary=tagtask, back_populates='tags')
 
@@ -43,4 +43,16 @@ class Tag(Base):
         for row in res:
             response.append({"name":row[0], "count":row[1], "sum":row[2]})
 
+        return response
+
+    @staticmethod
+    def unique_name(name=name):
+        stmt = text("SELECT COUNT(*) FROM Tag "
+                        "WHERE (Tag.name = :name) "
+                        "GROUP BY Tag.name").params(name=name)
+        res = db.engine.execute(stmt)
+        
+        response = []
+        for row in res:
+            response.append({"count":row[0]})
         return response

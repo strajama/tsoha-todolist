@@ -13,3 +13,12 @@ class TaskForm(FlaskForm):
 
     def edit_tags(self):
         TaskForm.tags.choices = [(tag.id, tag.name) for tag in Tag.query.order_by('name')]
+
+class EditTaskForm(FlaskForm):
+    name = StringField('Task name', [validators.Optional(), validators.Length(min=2, max=30)])
+    description = StringField('Description', [validators.Optional(), validators.Length( max=60)])
+    estimated_time = IntegerField('Estimated time', [validators.Optional(), validators.NumberRange(min=1, max=999)])
+    used_time = IntegerField('Time used', [validators.Optional(), validators.NumberRange(min=0, max=999)])
+ 
+    class Meta:
+        csrf = False

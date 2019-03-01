@@ -7,7 +7,7 @@ class User(Base):
     __tablename__ = 'account'
   
     name = db.Column(db.String(20), nullable=False)
-    username = db.Column(db.String(20), nullable=False)
+    username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False)
     role = db.Column(db.String(20), nullable=False)
     tasks = db.relationship("Task", backref='account', lazy=True)
@@ -74,4 +74,16 @@ class User(Base):
         response = []
         for row in res:
             response.append({"name":row[0], "count":row[1]})
+        return response
+
+    @staticmethod
+    def unique_username(username=username):
+        stmt = text("SELECT COUNT(*) FROM Account "
+                        "WHERE (Account.username = :username) "
+                        "GROUP BY Account.username").params(username=username)
+        res = db.engine.execute(stmt)
+        
+        response = []
+        for row in res:
+            response.append({"count":row[0]})
         return response
