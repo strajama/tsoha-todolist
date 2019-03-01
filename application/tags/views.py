@@ -7,7 +7,7 @@ from application.tags.forms import TagForm
 
 @app.route("/tags", methods=["GET"])
 def tags_index():
-    return render_template("tags/list.html", tags = Tag.query.all())
+    return render_template("tags/list.html", tags = Tag.query.order_by("name").all())
 
 @app.route("/tags/new/")
 @login_required(role='admin')
@@ -37,6 +37,7 @@ def tags_edit(tag_id):
 @app.route("/tags/edit/<tag_id>/", methods=["POST"])
 @login_required(role='admin')
 def tags_editor(tag_id):
+    
     form = TagForm(request.form)
     tag = Tag.query.get(tag_id)
 
