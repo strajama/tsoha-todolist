@@ -16,21 +16,6 @@ class Tag(Base):
         self.name = name
 
     @staticmethod
-    def find_tags_that_assigned_task():
-        stmt=text("SELECT Tag.id AS id, Tag.name AS name FROM Tag "
-                    "INNER JOIN Tagtask ON Tag.id=Tagtask.tag_id "
-                    "INNER JOIN Task ON Tagtask.task_id=Task.id;")
-
-        res = db.engine.execute(stmt)
-
-        response = []
-        for row in res:
-            if {"id":row[0], "name":row[1]} not in response:
-                response.append({"id":row[0], "name":row[1]})
-
-        return response
-
-    @staticmethod
     def find_used_tags():
         stmt=text("SELECT Tag.name, COUNT(*), SUM (Task.used_time) FROM Tag "
                     "INNER JOIN Tagtask ON Tagtask.tag_id = Tag.id "
