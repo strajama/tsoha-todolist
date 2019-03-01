@@ -9,7 +9,7 @@ from application.auth.models import User
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
-    return render_template("tasks/list.html", tasks = Task.query.order_by("name").limit(20).all())
+    return render_template("tasks/list.html", tasks = Task.query.order_by("name").limit(100).all())
 
 @app.route("/tasks/new/", methods=["GET"])
 @login_required
@@ -36,7 +36,7 @@ def tasks_create():
 @app.route("/tasks/edit/<task_id>/", methods=["GET"])
 @login_required
 def tasks_edit(task_id):
-    return render_template("tasks/edit.html", task_id = task_id, form = TaskForm(), task=Task.query.get(task_id), tags=Tag.query.all())
+    return render_template("tasks/edit.html", task_id = task_id, form = TaskForm(), task=Task.query.get(task_id), tags=Tag.query.order_by("name").limit(100).all())
 
 @app.route("/tasks/edit/<task_id>/", methods=["POST"])
 @login_required
@@ -50,25 +50,25 @@ def tasks_editor(task_id):
 
     if form.name.data:
         if len(form.name.data) > 30 or len(form.name.data) < 2:
-            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.order_by("name").limit(100).query.all())
         else:
             task.name = form.name.data
 
     if form.description.data:
         if len(form.description.data) > 60:
-            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.order_by("name").limit(100).all())
         else:
             task.description = form.description.data
 
     if form.estimated_time.data:
         if form.estimated_time.data < 1 or form.estimated_time.data > 999:
-            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.order_by("name").limit(100).all())
         else:
             task.estimated_time = form.estimated_time.data
 
     if form.used_time.data:
         if form.used_time.data < 0 or form.used_time.data > 999:
-            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.all())
+            return render_template("tasks/edit.html", form = form, task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.order_by("name").limit(100).all())
         else:
             task.used_time = form.used_time.data
             if task.used_time > task.estimated_time:
@@ -104,7 +104,7 @@ def tasks_addTime(task_id):
 
 @app.route("/tasks//tasktags/<task_id>", methods=["GET"])
 def tasks_tagsget(task_id):
-    return render_template("tasks/tasktags.html", task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.order_by("name").limit(20).all())
+    return render_template("tasks/tasktags.html", task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.order_by("name").limit(100).all())
 
 @app.route("/tasks//tasktags/<task_id>", methods=["POST"])
 @login_required

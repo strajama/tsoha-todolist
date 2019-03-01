@@ -7,7 +7,7 @@ from application.tags.forms import TagForm
 
 @app.route("/tags", methods=["GET"])
 def tags_index():
-    return render_template("tags/list.html", tags = Tag.query.order_by("name").limit(20).all())
+    return render_template("tags/list.html", tags = Tag.query.order_by("name").limit(100).all())
 
 @app.route("/tags/new/")
 @login_required(role='admin')
