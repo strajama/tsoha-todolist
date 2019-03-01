@@ -36,10 +36,13 @@ FROM tag ORDER BY tag.name
 * Käyttäjänä voin lisätä napista eri tehtäville tehtyjä tunteja
   * UPDATE task SET date_modified=CURRENT_TIMESTAMP, used_time=? WHERE task.id = ?
 
-* Käyttäjänä näen tehtäviin kiinnitetyt tagit.
+* Käyttäjänä näen tehtäviin kiinnitetyt tagit ja mitä tageja tehtävään voi lisätä.
   * SELECT tag.id AS tag_id, tag.date_created AS tag_date_created, tag.date_modified AS tag_date_modified, tag.name AS tag_name 
 FROM tag, tagtask 
 WHERE ? = tagtask.task_id AND tag.id = tagtask.tag_id
+  * SELECT tag.id AS tag_id, tag.date_created AS tag_date_created, tag.date_modified AS tag_date_modified, tag.name AS tag_name 
+FROM tag ORDER BY tag.name
+
 
 * Käyttäjänä voin kirjautuneena lisätä tehtävälle tageja.
   * INSERT INTO tagtask (tag_id, task_id) VALUES (?, ?)
