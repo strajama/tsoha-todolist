@@ -78,7 +78,9 @@ Uuden tagin luomiseksi sille pitää kirjoittaa uniikki nimi, joka on 2-30 merkk
 
 ## User information
 
-Linkin kautta näkee kirjautuneen käyttäjän käyttäjätilin tiedot (nimi, käyttäjätunnus ja salasana, rooli) ja tehtävät sekä pääsee muokkaamaan käyttäjätilin tiedoista nimeä, käyttäjätunnusta ja salasanaa. Käyttäjätunnukesen tulee olla uniikki.
+Linkin kautta näkee kirjautuneen käyttäjän käyttäjätilin tiedot (nimi, käyttäjätunnus ja salasana, rooli) ja tehtävät sekä pääsee muokkaamaan käyttäjätilin tiedoista nimeä, käyttäjätunnusta ja salasanaa.
+
+Käyttäjätunnuksen tulee olla uniikki ja 2-20 merkkiä pitkä, nimen 2-20 merkkiä pitkä ja salasanan 8-20 merkkiä pitkä.
 
 ## Login
 
