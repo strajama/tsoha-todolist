@@ -16,7 +16,7 @@
 FROM task ORDER BY task.name
  LIMIT 100 OFFSET 0
  
-* Käyttäjänä näen tehtäviin kiinnitetyt tagit ja aakkosissa 100 ensimmäistä tagia, jotka tehtävään voi lisätä.
+* Käyttäjänä näen tehtäviin kiinnitetyt tagit ja aakkosissa 100 ensimmäistä tagia, jotka tehtävään voi lisätä. Listaa voi filtteröidä nimen perusteella.
   * SELECT tag.id AS tag_id, tag.date_created AS tag_date_created, tag.date_modified AS tag_date_modified, tag.name AS tag_name 
 FROM tag, tagtask 
 WHERE ? = tagtask.task_id AND tag.id = tagtask.tag_id
@@ -53,16 +53,16 @@ WHERE account.password = ? AND account.username = ?
  
 * Käyttäjänä voin kirjautuneena poistaa tehtävältä tageja.
   * DELETE FROM tagtask WHERE tagtask.tag_id = ? AND tagtask.task_id = ?
-
   
-* Käyttäjänä voin kirjautuneena katsoa oman käyttäjätilini tietoja ja nähdä minkä nimisiä tehtäviä olen luonut
+* Käyttäjänä voin kirjautuneena katsoa oman käyttäjätilini tietoja ja nähdä sata kappaletta minkä nimisiä tehtäviä olen luonut
   * SELECT account.id AS account_id, account.date_created AS account_date_created, account.date_modified AS account_date_modified, account.name AS account_name, account.username AS account_username, account.password AS account_password, account.role AS account_role 
 FROM account 
 WHERE account.id = ?
-  * SELECT Task.name FROM Task WHERE (Task.Account_id = ?);
+  * SELECT Task.name FROM Task WHERE (Task.Account_id = ?) LIMIT (100);
 
-* Käyttäjänä voin kirjautuneena muokata oman käyttäjätilini tietoja roolia lukuunottamatta
+* Käyttäjänä voin kirjautuneena muokata oman käyttäjätilini tietoja roolia lukuunottamatta, mutta en sellaiseksi käyttäjänimeksi, joka toisella on jo käytössä.
   * UPDATE account SET date_modified=CURRENT_TIMESTAMP, name=?, username=?, password=? WHERE account.id = ?
+  * SELECT COUNT(*) FROM Account WHERE (Account.username = ?) GROUP BY Account.username
   
 # Admin-roolinen kirjautunut käyttäjä
 
