@@ -10,6 +10,8 @@ CREATE TABLE account (
 	UNIQUE (username)
 )
 
+CREATE UNIQUE INDEX indexusername ON account (username);
+
 CREATE TABLE tag (
 	id INTEGER NOT NULL, 
 	date_created DATETIME, 
@@ -18,6 +20,8 @@ CREATE TABLE tag (
 	PRIMARY KEY (id), 
 	UNIQUE (name)
 )
+
+CREATE UNIQUE INDEX indexname ON account (name);
 
 CREATE TABLE task (
 	id INTEGER NOT NULL, 
