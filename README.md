@@ -23,3 +23,4 @@ Kirjautua voi luomalla omat tunnukset.
 
 [Taulujen luomislauseet](https://github.com/strajama/tsoha-todolist/blob/master/documentation/taulujen%20luomislauseet.md)
 
+[Yleistä kuvailua](https://github.com/strajama/tsoha-todolist/blob/master/documentation/Sovelluksen%20kuvailua.md)
