@@ -11,11 +11,13 @@
 * Käyttäjänä näen minkä verran mikäkin käyttäjätyyppi on luonut tehtäviä.
   * SELECT Account.role, COUNT(*) FROM Account INNER JOIN Task ON Task.account_id = Account.id GROUP BY Account.role ORDER BY Account.role DESC;
 
-* Käyttäjänä voin katsella tehtäviä listana.
+* Käyttäjänä voin katsella tehtäviä listana, jotka näytetään aakkosjärjestyksessä.
   * SELECT task.id AS task_id, task.date_created AS task_date_created, task.date_modified AS task_date_modified, task.name AS task_name, task.description AS task_description, task.estimated_time AS task_estimated_time, task.used_time AS task_used_time, task.username AS task_username, task.account_id AS task_account_id 
+FROM task ORDER BY task.name
 
-* Käyttäjänä voin katsella tageja listana.
+* Käyttäjänä voin katsella tageja listana, jotka näytetään aakkosjärjestyksessä.
   * SELECT tag.id AS tag_id, tag.date_created AS tag_date_created, tag.date_modified AS tag_date_modified, tag.name AS tag_name 
+FROM tag ORDER BY tag.name
 
 * Käyttäjänä voin luoda käyttäjätunnuksena.
   * INSERT INTO account (date_created, date_modified, name, username, password, role) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, ?, ?)
