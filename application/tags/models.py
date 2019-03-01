@@ -35,7 +35,8 @@ class Tag(Base):
         stmt=text("SELECT Tag.name, COUNT(*), SUM (Task.used_time) FROM Tag "
                     "INNER JOIN Tagtask ON Tagtask.tag_id = Tag.id "
                     "INNER JOIN Task ON Task.id = Tagtask.task_id "
-                    "GROUP BY Tag.name;")
+                    "GROUP BY Tag.name "
+                    "LIMIT (10);")
 
         res = db.engine.execute(stmt)
 

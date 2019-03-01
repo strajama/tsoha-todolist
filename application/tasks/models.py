@@ -39,13 +39,3 @@ class Task(Base):
             response.append({"name":row[0]})
 
         return response
-
-    @staticmethod
-    def find_task_id(name):
-        stmt =text("SELECT Task.id FROM Task WHERE (Task.name = :name);").params(name=name)
-        res = db.engine.execute(stmt)
-        response = []
-        for row in res:
-            response.append({"id":row[0]})
-
-        return response

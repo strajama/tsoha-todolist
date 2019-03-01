@@ -2,44 +2,6 @@
 
 {% block body %}
 
-{% if return_Task is defined and return_Task%}
-<ul class="list-group list-group-flush">
-  <li class="text-uppercase">{{ task.name }}</li>
-  <li>{{ task.description }}</li>
-  <li>{{ task.estimated_time }}</li>
-  <li>{{ task.used_time }}</li>
-  <li><a class="page-link" href="{{ url_for('tasks_tagsget', task_id=task.id) }}">Tags</a></td>
-  {% if task.account_id == current_user.id %}
-    <li>
-      <a class="page-link" href="{{ url_for('tasks_edit', task_id=task.id) }}">Edit task</a>
-    </li>
-  {% else %}
-    <li class="p-3 mb-2 bg-info text-white">Owner only</li>
-  {% endif %}
-  <li>{{ task.username }}</li>
-  {% if current_user.is_authenticated %}
-    <li>
-      <form method="POST" class="form-group" action="{{ url_for('tasks_addTime', task_id=task.id) }}">
-        <input type="submit" class="btn btn-primary" value="Add time"/>
-      </form>
-    </li>
-  {% else %}
-    <li class="p-3 mb-2 bg-secondary text-white">Users only</li>
-  {% endif %}
-  {% if current_user.role == 'admin'%}
-    <li>
-      <form method="POST" class="form-group" action="{{ url_for('tasks_delete', task_id=task.id) }}">
-        <input type="submit" class="btn btn-danger" value="Delete"/>
-      </form>
-    </li>
-  {% else %}
-    <li class="p-3 mb-2 bg-info text-white">Admin only</li>
-  {% endif %}
-</ul>
-
-
-{% endif %}
-
 {% if unstarted_tasks is defined and unstarted_tasks%}
 <ul class="list-group list-group-flush">
   <li class="list-group-item list-group-item-primary">

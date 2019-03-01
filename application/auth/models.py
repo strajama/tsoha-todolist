@@ -42,7 +42,8 @@ class User(Base):
                      " LEFT JOIN Task ON Task.account_id = Account.id"
                      " WHERE (Task.used_time == 0)" # OR Task.usedtime = :tellervo)"
                      " GROUP BY Account.id"
-                     " HAVING COUNT(Task.id) = 0").params(tellervo=susanna)
+                     " HAVING COUNT(Task.id) = 0"
+                     " LIMIT (100);").params(tellervo=susanna)
         res = db.engine.execute(stmt)
 
         response = []
@@ -55,7 +56,8 @@ class User(Base):
         stmt = text("SELECT Account.id, Account.name FROM Account "
                         "LEFT JOIN Task ON Task.account_id = Account.id "
                         "WHERE (Task.used_time = :used_time) "
-                        "GROUP BY Account.id").params(used_time=used_time)
+                        "GROUP BY Account.id "
+                        "LIMIT (100);").params(used_time=used_time)
         res = db.engine.execute(stmt)
 
         response = []
