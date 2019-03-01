@@ -19,3 +19,7 @@ Kirjautua voi luomalla omat tunnukset.
 
 [User storyt](https://github.com/strajama/tsoha-todolist/blob/master/documentation/user%20stories.md)
 
+[Tietokantakaavio kuvana](https://github.com/strajama/tsoha-todolist/blob/master/documentation/tietokantakaavio.png)
+
+[Taulujen luomislauseet](https://github.com/strajama/tsoha-todolist/blob/master/documentation/taulujen%20luomislauseet.md)
+
