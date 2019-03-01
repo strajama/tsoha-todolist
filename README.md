@@ -1,14 +1,13 @@
 # tsoha-Muistilista
 
-Muistilistasovellus, joka on tarkoitettu yhden tai useamman henkilön käyttöön. Sovellukseen voi kirjautua. Muistilistaan voi lisätä uusia tehtäviä, merkitä tehtäviä tehdyksi, muokata tehtäviä, lisätä niihin tageja ja poistaa tehtäviä. Admin-oikeudet omaava käyttäjä voi luoda, muokata ja poistaa tageja. 
+* Muistilistasovellus, joka on tarkoitettu yhden tai useamman henkilön käyttöön. 
 
-## Toimintoja:
+* Sovellukseen voi kirjautua ja omia käyttäjätietoja voi roolia lukuunottamatta muokata. 
 
-* Kirjautuminen ja salasana
-* Tehtävän lisäys, muokkaus ja poisto
-* Tehtävät voi listata
-* Tagin lisäys, muokkaus ja poisto
-* Tagit voi listata
+* Muistilistaan voi lisätä uusia tehtäviä, merkitä tehtäviä tehdyksi, muokata omia tehtäviään, lisätä niihin tageja ja poistaa tehtäviä. 
+
+* Admin-oikeudet omaava käyttäjä voi luoda, muokata ja poistaa tageja. 
+
 
 [Kokeile sovellusta Herokussa](https://tsoha-todolist-python.herokuapp.com/)
 
