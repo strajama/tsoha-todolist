@@ -9,7 +9,7 @@ from application.auth.models import User
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
-    return render_template("tasks/list.html", tasks = Task.query.order_by("name").all())
+    return render_template("tasks/list.html", tasks = Task.query.order_by("name").limit(20).all())
 
 @app.route("/tasks/new/", methods=["GET"])
 @login_required
@@ -104,7 +104,7 @@ def tasks_addTime(task_id):
 
 @app.route("/tasks//tasktags/<task_id>", methods=["GET"])
 def tasks_tagsget(task_id):
-    return render_template("tasks/tasktags.html", task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.order_by("name").all())
+    return render_template("tasks/tasktags.html", task_id = task_id, task=Task.query.get(task_id), tags=Tag.query.order_by("name").limit(20).all())
 
 @app.route("/tasks//tasktags/<task_id>", methods=["POST"])
 @login_required
